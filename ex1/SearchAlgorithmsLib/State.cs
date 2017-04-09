@@ -21,5 +21,10 @@ namespace SearchAlgorithmsLib
         {
             return state.Equals((obj as State).state);
         }
+
+        public override int GetHashCode()
+        {
+            return 0;
+        }
     }
 }
