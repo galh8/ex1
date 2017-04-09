@@ -10,6 +10,7 @@ namespace ex1
     {
         static void Main(string[] args)
         {
+            Console.Beep();
         }
     }
 }
