@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Priority_Queue;
 
 
 namespace SearchAlgorithmsLib
 {
     public abstract class Searcher : ISearcher
     {
-
-        private MyPriorityQueue<State> openList;
+FastPriorityQueue
+        private FastPriorityQueue<State> openList;
         private int evaluatedNodes;
 
         public Searcher()
         {
-            openList = new MyPriorityQueue<State>();
+            openList = new FastPriorityQueue<State>();
             evaluatedNodes = 0;
-        }
+        }+
 
         protected State popOpenList()
         {
