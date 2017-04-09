@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib
 {
-    public class State<T>
+    public class State
     {
-        private T state;
+        private string state;
         private double cost;
-        private State<T> cameFrom;
+        private State cameFrom;
 
-        public State(T state)
+        public State(string state)
         {
             this.state = state;
         }
 
-        public bool Equals(State<T> s)
+        public override bool Equals(object obj)
         {
-            return state.Equals(s.state);
+            return state.Equals((obj as State).state);
         }
     }
 }
