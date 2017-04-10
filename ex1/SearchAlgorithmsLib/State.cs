@@ -31,5 +31,18 @@ namespace SearchAlgorithmsLib
         {
             return base.Equals(obj);
         }
+
+        public double Cost
+        {
+            get; set;
+
+        }
+
+        public State<T> CameFrom
+        {
+            get; set;
+
+        }
+
     }
 }
