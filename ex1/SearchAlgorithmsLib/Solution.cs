@@ -8,9 +8,9 @@ namespace SearchAlgorithmsLib
 {
     class Solution<T>
     {
-        private List<T> pathToGoal;
+        private List<State<T>> pathToGoal;
         
-        public List<T> PathToGoal
+        public List<State<T>> PathToGoal
         {
             get; set; 
         }
@@ -18,14 +18,14 @@ namespace SearchAlgorithmsLib
         public override string ToString()
         {
             StringBuilder pathToReturn = new StringBuilder();
-            foreach(T node in pathToGoal)
+            foreach(State<T> node in pathToGoal)
             {
                 pathToReturn.Append(node.ToString());
             }
             return pathToReturn.ToString();
         }
 
-        public void insertNode(T node)
+        public void insertNode(State<T> node)
         {
             pathToGoal.Add(node);
         }
