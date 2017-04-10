@@ -7,7 +7,7 @@ using Priority_Queue;
 
 namespace SearchAlgorithmsLib
 {
-    public abstract class Searcher : ISearcher
+    public abstract class Searcher<T> : ISearcher<T>
     {
         //private FastPriorityQueue<State> openList;
         private int evaluatedNodes;
@@ -15,6 +15,12 @@ namespace SearchAlgorithmsLib
         {
             // openList = new FastPriorityQueue<State>();
             evaluatedNodes = 0;
+        }
+
+        public int getNumberOfNodesEvaluated()
+        {
+            //throw new NotImplementedException();
+            return 0;
         }
 
         //protected State popOpenList()
@@ -30,8 +36,8 @@ namespace SearchAlgorithmsLib
         //{
         //   return evaluatedNodes;
         //}
-        //public abstract Solution search(ISearchable searchable);
-        //}
+        public abstract Solution<T> search(ISearchable<T> searchable);
+        
 
     }
 }
