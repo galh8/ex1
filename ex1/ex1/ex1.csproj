@@ -53,7 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientHandler.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="GenerateMazeCommand.cs" />
     <Compile Include="IClientHandler.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IModel.cs" />
     <Compile Include="Program.cs" />

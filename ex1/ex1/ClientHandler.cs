@@ -11,20 +11,29 @@ namespace ex1
 {
     class ClientHandler : IClientHandler
     {
-        private 
+        private IController controller;
+        
+        public ClientHandler(IController controller)
+        {
+            this.controller = controller;
+        }
 
         public void HandleClient(TcpClient client)
         {
-            new Task(() =>
+            
+                new Task(() =>
+                { 
             using (NetworkStream stream = client.GetStream())
-            using (StreamReader reader = new StreamReader(stream))
-            using (StreamWriter writer = new StreamWriter(stream))
-            {
-                string commandLine = reader.ReadLine();
-
-            }
-
-            ).Start();
+                using (StreamReader reader = new StreamReader(stream))
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    string commandLine = reader.ReadLine();
+                    string result = controller.executeCommand(commandLine, client);
+                    writer.Write(result);
+                }
+                    //maybe we shouldnt close it...
+                    client.Close();
+            }).Start();
         }
     }
 }

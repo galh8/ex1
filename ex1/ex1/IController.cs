@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SearchAlgorithmsLib;
+using System.Net.Sockets;
 
 namespace ex1
 {
@@ -12,6 +13,6 @@ namespace ex1
         void setModel(IModel m);
         void setView(IClientHandler v);
         void setSolution(Solution<T> s);
-        void calculate(Problem p);
+        string executeCommand(String problem,TcpClient client );
     }
 }
