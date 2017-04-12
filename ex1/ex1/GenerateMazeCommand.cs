@@ -16,7 +16,12 @@ namespace ex1
         }
         public string Execute(string[] args,TcpClient client)
         {
-            string 
+            string name = args[0];
+            int rows = int.Parse(args[1]);
+            int cols = int.Parse(args[2]);
+
+            MazeGeneratorLib maze = model.GenerateMaze(name, rows, cols);
+            return maze.ToJSON();
         }
     }
 }
