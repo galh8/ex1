@@ -7,7 +7,7 @@ using Priority_Queue;
 
 namespace SearchAlgorithmsLib
 {
-    public abstract class PrioritySearcher<T> : ISearcher<T>
+    public abstract class PrioritySearcher<T> : Searcher<T>
     {
         protected SimplePriorityQueue<State<T>> openList;
         private int evaluatedNodes;
@@ -17,12 +17,9 @@ namespace SearchAlgorithmsLib
             evaluatedNodes = 0;
         }
 
-        public int getNumberOfNodesEvaluated()
-        {
-            return evaluatedNodes;
-        }
 
-        public abstract Solution<T> search(ISearchable<T> searchable);
+
+        public override abstract Solution<T> search(ISearchable<T> searchable);
 
         protected State<T> popOpenList()
         {
