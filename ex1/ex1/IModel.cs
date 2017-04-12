@@ -8,6 +8,6 @@ namespace ex1
 {
     public interface IModel
     {
-        void search(Problem p);
+        void search(string problem);
     }
 }
