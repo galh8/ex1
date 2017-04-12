@@ -16,6 +16,7 @@ namespace ex1
         DFSMazeGenerator mazeGenerator;
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
+
         public Model()
         {
             mazeGenerator = new DFSMazeGenerator();
