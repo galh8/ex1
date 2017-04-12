@@ -1,16 +1,17 @@
-﻿using System;
+﻿using SearchAlgorithmsLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ex1
+namespace ServerProject
 {
     class Controller : IController
     {
         private Dictionary<string, ICommand> commands;
-        private IModel model;
+        private Model model;
         private IClientHandler view;
 
         public Controller()
@@ -37,10 +38,11 @@ namespace ex1
             throw new NotImplementedException();
         }
 
-        public void setSolution(SearchAlgorithmsLib.Solution<T> s)
-        {
-            throw new NotImplementedException();
-        }
+
+        //public void setSolution(Solution<T> s)
+        //{
+        //   throw new NotImplementedException();
+        //}
 
         public void setView(IClientHandler v)
         {

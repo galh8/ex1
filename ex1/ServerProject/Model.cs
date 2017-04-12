@@ -8,7 +8,7 @@ using MazeGeneratorLib;
 using SearchAlgorithmsLib;
 
 
-namespace ex1
+namespace ServerProject
 {
     class Model : IModel
     {
@@ -25,16 +25,16 @@ namespace ex1
             mazeSolutions = new Dictionary<string, string>();
         }
 
-        public void search(string problem)
-        {
-            throw new NotImplementedException();
-        }
+        //public void search(string problem)
+        //{
+        //   throw new NotImplementedException();
+        //}
 
         public Maze GenerateMaze(string name, int rows, int cols)
         {
             
             Maze maze = mazeGenerator.Generate(rows, cols);
-            mazeSolutions.Add(name,"null");
+            //mazeSolutions.Add(name,"null");
             return maze;
         }
 
