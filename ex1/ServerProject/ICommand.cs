@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 
-namespace ex1
+namespace ServerProject
 {
-    public interface IClientHandler
+    interface ICommand
     {
-        void HandleClient(TcpClient client);
+        string Execute(string[] args, TcpClient client = null);
     }
 }

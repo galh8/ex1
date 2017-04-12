@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Sockets;
 
-namespace ex1
+namespace ServerProject
 {
-    interface ICommand
+    public interface IModel
     {
-        string Execute(string[] args, TcpClient client = null);
+       // void search(string problem);
     }
 }

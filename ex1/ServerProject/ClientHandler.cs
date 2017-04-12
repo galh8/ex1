@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ex1
+namespace ServerProject
 {
     class ClientHandler : IClientHandler
     {

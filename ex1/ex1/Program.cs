@@ -7,7 +7,7 @@ using MazeGeneratorLib;
 using MazeLib;
 using SearchAlgorithmsLib;
 
-namespace ex1
+namespace ex1a
 {
     class Program
     {

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using SearchAlgorithmsLib;
 using System.Net.Sockets;
 
-namespace ex1
+namespace ServerProject
 {
-    interface IController
+    public interface IController
     {
         void setModel(IModel m);
         void setView(IClientHandler v);
-        void setSolution(Solution<T> s);
+       // void setSolution(Solution<T> s);
         string executeCommand(String problem,TcpClient client );
     }
 }

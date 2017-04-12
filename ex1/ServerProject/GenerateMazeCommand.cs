@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
+using MazeGeneratorLib;
+using MazeLib;
 
-namespace ex1
+namespace ServerProject
 {
     class GenerateMazeCommand : ICommand
     {
-        private IModel model;
-        public GenerateMazeCommand(IModel model)
+        private Model model;
+        public GenerateMazeCommand(Model model)
         {
             this.model = model;
         }
@@ -20,7 +22,7 @@ namespace ex1
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
 
-            MazeGeneratorLib maze = model.GenerateMaze(name, rows, cols);
+            Maze maze = model.GenerateMaze(name, rows, cols);
             return maze.ToJSON();
         }
     }

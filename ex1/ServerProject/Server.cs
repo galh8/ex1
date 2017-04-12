@@ -7,9 +7,9 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 
-namespace ex1
+namespace ServerProject
 {
-    class Server
+    public class Server
     {
         private int port;
         private TcpListener listener;
