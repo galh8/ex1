@@ -17,6 +17,11 @@ namespace SearchAlgorithmsLib
             this.state = state;
         }
 
+        public override string ToString()
+        {
+            return state.ToString();
+        }
+
         public bool Equals(State<T> s)
         {
             return state.Equals(s.state);
@@ -24,12 +29,14 @@ namespace SearchAlgorithmsLib
 
         public override int GetHashCode()
         {
-            return 0;
+            return state.ToString().GetHashCode();
         }
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            if(obj!=null) 
+             return state.Equals((obj as State<T>).state);
+            return false;
         }
 
         public double Cost

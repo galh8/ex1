@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace SearchAlgorithmsLib
 {
-    class Solution<T>
+    public class Solution<T>
     {
         private List<State<T>> pathToGoal;
+        public Solution()
+            {
+            pathToGoal = new List<State<T>>();
+            }
+
         
         public List<State<T>> PathToGoal
         {
@@ -20,7 +25,7 @@ namespace SearchAlgorithmsLib
             StringBuilder pathToReturn = new StringBuilder();
             foreach(State<T> node in pathToGoal)
             {
-                pathToReturn.Append(node.ToString());
+                pathToReturn.Append(node.ToString()+ " ");
             }
             return pathToReturn.ToString();
         }

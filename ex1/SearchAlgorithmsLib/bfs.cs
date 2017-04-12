@@ -7,38 +7,41 @@ using Priority_Queue;
 
 namespace SearchAlgorithmsLib
 {
-    class BFS<T> : ISearcher<T>
+    public class BFS<T> : PrioritySearcher<T>
     {
-        public override search(ISearchable<T> searchable)
+
+        public override Solution<T> search(ISearchable<T> searchable)
         {
-            Priority_Queue.SimplePriorityQueue<State<T>> openQueue = new Priority_Queue.SimplePriorityQueue<State<T>>();
+            //Priority_Queue.SimplePriorityQueue<State<T>> openQueue = new Priority_Queue.SimplePriorityQueue<State<T>>();
             HashSet<State<T>> closedSet = new HashSet<State<T>>();
             State<T> initialState = searchable.getInitialState();
-            while (openQueue.Count > 0)
+            addToOpenList(initialState);
+            while (openList.Count > 0)
             {
-                State<T> currentState = openQueue.Dequeue();
+                State<T> currentState = popOpenList();
                 closedSet.Add(currentState);
                 if (currentState.Equals(searchable.getGoalState()))
                     return backTrace(initialState,currentState);
                 List<State<T>> succerssors = searchable.getAllPossibleStates(currentState);
                 foreach (State<T> currentSuccessor in succerssors)
                 {
-                    if (!closedSet.Contains(currentSuccessor) && !openQueue.Contains(currentSuccessor))
+                    if (!closedSet.Contains(currentSuccessor) && !openList.Contains(currentSuccessor))
                     {
 
-                        openQueue.Enqueue(currentSuccessor,(float)currentSuccessor.Cost);
+                        openList.Enqueue(currentSuccessor,(float)(currentSuccessor.Cost + currentState.Cost));
                         currentSuccessor.CameFrom = currentState;
                     }
-                    else if (openQueue.Contains(currentSuccessor))
+                    else if (openList.Contains(currentSuccessor))
                     {
-                        if (currentSuccessor.Cost + currentState.Cost < getSpecificElement(openQueue, currentSuccessor))
+                        if (currentSuccessor.Cost + currentState.Cost < getSpecificElementCost(openList, currentSuccessor))
                         {
-                            openQueue.UpdatePriority(currentSuccessor, (float)(currentSuccessor.Cost + currentState.Cost));
+                            openList.UpdatePriority(currentSuccessor, (float)(currentSuccessor.Cost + currentState.Cost));
                         }
                     }
                 }
 
             }
+            return null;
         }
         private Solution<T> backTrace(State<T>initialState,State<T> goalState)
         {
@@ -51,7 +54,7 @@ namespace SearchAlgorithmsLib
             }
             return solution;
         }
-        private float getSpecificElement(Priority_Queue.SimplePriorityQueue<State<T>> queue, State<T> element)
+        private float getSpecificElementCost(Priority_Queue.SimplePriorityQueue<State<T>> queue, State<T> element)
         {
             foreach(State<T> elm in queue)
             {
