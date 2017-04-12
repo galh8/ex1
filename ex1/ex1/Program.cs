@@ -19,8 +19,15 @@ namespace ex1
 
             SearchableMaze searchableMaze = new SearchableMaze(maze);
             BFS<Position> bfsSolver = new BFS<Position>();
+            DFS<Position> dfsSolver = new DFS<Position>();
+            Console.WriteLine("BFS:");
             Console.WriteLine(bfsSolver.search(searchableMaze));
             Console.WriteLine(bfsSolver.getNumberOfNodesEvaluated());
+
+            Console.WriteLine("DFS:");
+            Console.WriteLine(dfsSolver.search(searchableMaze));
+            Console.WriteLine(dfsSolver.getNumberOfNodesEvaluated());
+
             Console.Read();
         }
     }

@@ -10,15 +10,13 @@ namespace SearchAlgorithmsLib
     public abstract class PrioritySearcher<T> : Searcher<T>
     {
         protected SimplePriorityQueue<State<T>> openList;
-        private int evaluatedNodes;
+        //private int evaluatedNodes;
+
         public PrioritySearcher()
         {
             openList = new SimplePriorityQueue<State<T>>();
-            evaluatedNodes = 0;
         }
-
-
-
+        
         public override abstract Solution<T> search(ISearchable<T> searchable);
 
         protected State<T> popOpenList()

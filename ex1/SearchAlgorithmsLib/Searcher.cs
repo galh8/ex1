@@ -8,7 +8,13 @@ namespace SearchAlgorithmsLib
 {
     public abstract class Searcher<T> : ISearcher<T>
     {
-        private int evaluatedNodes;
+        protected int evaluatedNodes;
+
+        public Searcher()
+        {
+            evaluatedNodes = 0;
+        }
+
         public int getNumberOfNodesEvaluated()
         {
             return evaluatedNodes;
