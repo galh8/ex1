@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using Newtonsoft.Json;
+
 
 using System.IO;
 
@@ -18,17 +20,28 @@ namespace ClientProject
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 49251);
             TcpClient client = new TcpClient();
             client.Connect(ep);
-            using (NetworkStream stream = client.GetStream())
-            using (BinaryReader reader = new BinaryReader(stream))
-            using (BinaryWriter writer = new BinaryWriter(stream))
+            Console.WriteLine("Client connected");
+            StringBuilder commandLine = new StringBuilder();
+            //building a string of the args.
+            for (int i = 0; i < args.Length; i++)
             {
-                writer.Write(args.ToString());
-                string result = reader.ReadString();
-                Console.WriteLine("Result = {0} ", result);
-                Console.Read();
+                commandLine.Append(args[i]);
+                commandLine.Append(" ");
+            }
+            using (NetworkStream stream = client.GetStream())
+            using (StreamReader reader = new StreamReader(stream))
+            using (StreamWriter writer = new StreamWriter(stream))
+            {
+                Console.WriteLine("Starting client");
+                //string Tosend = JsonConvert.SerializeObject(commandLine.ToString());
+                //writer.Write(Tosend);
+                writer.Write(commandLine.ToString());
+                //string result = reader.ReadString();
+                //Console.WriteLine("Result = {0} ", result);
+                //Console.Read();
             }
             client.Close();
-            
+        
         }
        
     }

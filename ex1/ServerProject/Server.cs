@@ -44,9 +44,12 @@ namespace ServerProject
                     Console.WriteLine("Server stopped");
                 }
             });
-            
+            Console.WriteLine("before starting the listening task");
             task.Start();
-            //task.Wait();
+            Console.WriteLine("after start the listening task");
+            task.Wait();
+            Console.WriteLine("after wait ");
+            
         }
         public void Stop()
         {

@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace ServerProject
 {
@@ -20,14 +21,14 @@ namespace ServerProject
 
         public void HandleClient(TcpClient client)
         {
-            
-                new Task(() =>
+                 new Task(() =>
                 { 
-            using (NetworkStream stream = client.GetStream())
+                using (NetworkStream stream = client.GetStream())
                 using (StreamReader reader = new StreamReader(stream))
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
                     string commandLine = reader.ReadLine();
+                    //Console.WriteLine(commandLine);
                     string result = controller.executeCommand(commandLine, client);
                     writer.Write(result);
                 }
