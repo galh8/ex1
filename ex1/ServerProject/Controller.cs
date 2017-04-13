@@ -25,7 +25,6 @@ namespace ServerProject
 
         public string executeCommand(string commandLine, TcpClient client)
         {
-            Console.WriteLine(commandLine);
             string[] arr = commandLine.Split(' ');
             string commandKey = arr[0];
             if (!commands.ContainsKey(commandKey))

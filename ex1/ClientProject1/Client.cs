@@ -28,10 +28,9 @@ namespace ClientProject
                 commandLine.Append(args[i]);
                 commandLine.Append(" ");
             }
-            Console.WriteLine(commandLine.ToString());
             using (NetworkStream stream = client.GetStream())
-            using (BinaryReader reader = new BinaryReader(stream))
-            using (BinaryWriter writer = new BinaryWriter(stream))
+            using (StreamReader reader = new StreamReader(stream))
+            using (StreamWriter writer = new StreamWriter(stream))
             {
                 Console.WriteLine("Starting client");
                 //string Tosend = JsonConvert.SerializeObject(commandLine.ToString());

@@ -28,9 +28,7 @@ namespace ServerProject
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
                     string commandLine = reader.ReadLine();
-                    Console.WriteLine(commandLine);
-                    //string convertedCommandLine = JsonConvert.DeserializeObject<string>(commandLine);
-                    //Console.WriteLine(convertedCommandLine);
+                    //Console.WriteLine(commandLine);
                     string result = controller.executeCommand(commandLine, client);
                     writer.Write(result);
                 }
