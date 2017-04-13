@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ServerProject
 {
@@ -24,6 +25,7 @@ namespace ServerProject
 
         public string executeCommand(string commandLine, TcpClient client)
         {
+            Console.WriteLine(commandLine);
             string[] arr = commandLine.Split(' ');
             string commandKey = arr[0];
             if (!commands.ContainsKey(commandKey))
