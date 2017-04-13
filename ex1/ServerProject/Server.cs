@@ -25,6 +25,7 @@ namespace ServerProject
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             listener = new TcpListener(ep);
             listener.Start();
+            Console.WriteLine("Waiting for connections...");
 
             Task task = new Task(() =>
             {
@@ -33,15 +34,18 @@ namespace ServerProject
                     try
                     {
                         TcpClient client = listener.AcceptTcpClient();
+                        Console.WriteLine("Got new connection..!");
                         ch.HandleClient(client);
                     }
                     catch(SocketException)
                     {
                         break;
                     }
+                    Console.WriteLine("Server stopped");
                 }
             });
             task.Start();
+            //task.Wait();
         }
         public void Stop()
         {
