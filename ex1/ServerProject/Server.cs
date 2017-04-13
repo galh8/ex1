@@ -29,6 +29,7 @@ namespace ServerProject
 
             Task task = new Task(() =>
             {
+                Console.WriteLine("after Task");
                 while(true)
                 {
                     try
@@ -44,8 +45,11 @@ namespace ServerProject
                     Console.WriteLine("Server stopped");
                 }
             });
+            Console.WriteLine("before start");
             task.Start();
-            //task.Wait();
+            Console.WriteLine("after start");
+            task.Wait();
+            Console.WriteLine("after wait");
         }
         public void Stop()
         {
