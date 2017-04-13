@@ -30,6 +30,7 @@ namespace ServerProject
                     string commandLine = reader.ReadLine();
                     //Console.WriteLine(commandLine);
                     string result = controller.executeCommand(commandLine, client);
+                    Console.WriteLine("the result we wanna send: {0}" , result);
                     writer.Write(result);
                 }
                     //maybe we shouldnt close it...

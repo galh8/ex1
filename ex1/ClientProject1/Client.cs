@@ -33,12 +33,11 @@ namespace ClientProject
             using (StreamWriter writer = new StreamWriter(stream))
             {
                 Console.WriteLine("Starting client");
-                //string Tosend = JsonConvert.SerializeObject(commandLine.ToString());
-                //writer.Write(Tosend);
                 writer.Write(commandLine.ToString());
-                //string result = reader.ReadString();
-                //Console.WriteLine("Result = {0} ", result);
-                //Console.Read();
+                System.Threading.Thread.Sleep(3000);
+                string result;
+                int i = reader.Read(result);
+                Console.WriteLine("Result = {0} ", result);
             }
             client.Close();
         

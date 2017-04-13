@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using MazeGeneratorLib;
 using MazeLib;
+using Newtonsoft.Json;
 
 namespace ServerProject
 {
@@ -23,7 +24,9 @@ namespace ServerProject
             int cols = int.Parse(args[2]);
 
             Maze maze = model.GenerateMaze(name, rows, cols);
+            Console.WriteLine("maze created");
             return maze.ToJSON();
+            
         }
     }
 }
