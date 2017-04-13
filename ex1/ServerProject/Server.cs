@@ -44,6 +44,7 @@ namespace ServerProject
                     Console.WriteLine("Server stopped");
                 }
             });
+            
             task.Start();
             //task.Wait();
         }
