@@ -28,13 +28,14 @@ namespace ServerProject
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
                     string commandLine = reader.ReadLine();
-                    //Console.WriteLine(commandLine);
+                        Console.WriteLine(commandLine);
                     string result = controller.executeCommand(commandLine, client);
                     Console.WriteLine("the result we wanna send: {0}" , result);
                     writer.Write(result);
+                    Console.WriteLine("message has been sent to the client");
                 }
                     //maybe we shouldnt close it...
-                    client.Close();
+                    //client.Close();
             }).Start();
         }
     }
