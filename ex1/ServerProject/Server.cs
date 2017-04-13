@@ -29,7 +29,6 @@ namespace ServerProject
 
             Task task = new Task(() =>
             {
-                Console.WriteLine("after Task");
                 while(true)
                 {
                     try
@@ -45,11 +44,12 @@ namespace ServerProject
                     Console.WriteLine("Server stopped");
                 }
             });
-            Console.WriteLine("before start");
+            Console.WriteLine("before starting the listening task");
             task.Start();
-            Console.WriteLine("after start");
+            Console.WriteLine("after start the listening task");
             task.Wait();
-            Console.WriteLine("after wait");
+            Console.WriteLine("after wait ");
+            
         }
         public void Stop()
         {
