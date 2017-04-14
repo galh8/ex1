@@ -12,7 +12,7 @@ namespace ServerProject
         {
             IController controller = new Controller();
             IClientHandler ch = new ClientHandler(controller);
-            Server server = new Server(55555, ch);
+            Server server = new Server(49251, ch);
             server.start();
         }
     }
