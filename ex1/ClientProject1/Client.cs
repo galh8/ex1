@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using Newtonsoft.Json;
-
+using System.Threading;
 
 using System.IO;
 
@@ -32,16 +32,60 @@ namespace ClientProject
             using (StreamReader reader = new StreamReader(stream))
             using (StreamWriter writer = new StreamWriter(stream))
             {
-                Console.WriteLine("Starting client");
-                writer.Write(commandLine.ToString());
-                System.Threading.Thread.Sleep(3000);
-                string result;
-                int i = reader.Read(result);
-                Console.WriteLine("Result = {0} ", result);
+
+                Thread sender = new Thread(delegate ()
+            {
+
+                {
+                    //Console.WriteLine("Starting client");
+
+                    writer.WriteLine(commandLine.ToString());
+                    writer.Flush();
+                    //writer.WriteLine("");
+
+                    // Thread.Sleep(3000)
+                }
+            });
+               
+
+                Thread receiver = new Thread(delegate ()
+                {
+
+                    {
+                        while (true)
+                        {
+                            //Console.WriteLine("Starting client");
+                            string result = reader.ReadLine();
+                            Console.WriteLine(result);
+                        }
+                    }
+                });
+                sender.Start();
+                sender.Join();
+                receiver.Start();
+                receiver.Join();
             }
-            client.Close();
-        
+
+
         }
+
+
+        //using (NetworkStream stream = client.GetStream())
+        //using (StreamReader reader = new StreamReader(stream))
+        //using (StreamWriter writer = new StreamWriter(stream))
+        //{
+        //    Console.WriteLine("Starting client");
+        //    writer.WriteLine(commandLine.ToString());
+        //   // Console.WriteLine("BLABLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        //    //Console.WriteLine("Before sleeping");
+        //    // System.Threading.Thread.Sleep(3000);
+        //    //string result = reader.ReadLine();
+        //   // Console.WriteLine("Result = {0} ", result);
+
+        //}
+
+
+    }
        
     }
-}
+
