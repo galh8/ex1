@@ -21,22 +21,27 @@ namespace ServerProject
 
         public void HandleClient(TcpClient client)
         {
-                 new Task(() =>
-                {
+                Task handleClient =  new Task(() =>
+                { 
                 using (NetworkStream stream = client.GetStream())
                 using (StreamReader reader = new StreamReader(stream))
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    string commandLine = reader.ReadLine();
-                        Console.WriteLine(commandLine);
-                    string result = controller.executeCommand(commandLine, client);
-                    Console.WriteLine("the result we wanna send: {0}" , result);
-                    writer.Write(result);
-                    Console.WriteLine("message has been sent to the client");
+                        while (true)
+                        {
+                            string commandLine = reader.ReadLine();
+                            //Console.WriteLine(commandLine);
+                            string result = controller.executeCommand(commandLine, client);
+                            Console.WriteLine("the result we wanna send: {0}", result);
+                            writer.WriteLine(result);
+                            writer.Flush();
+                        }
                 }
                     //maybe we shouldnt close it...
                     //client.Close();
-            }).Start();
+            });
+            handleClient.Start();
+            handleClient.Wait();
         }
     }
 }

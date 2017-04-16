@@ -8,11 +8,11 @@ namespace SearchAlgorithmsLib
 {
     public class Solution<T>
     {
-        private List<State<T>> pathToGoal;
+        protected List<State<T>> pathToGoal;
         public Solution()
-            {
-            pathToGoal = new List<State<T>>();
-            }
+        {
+        pathToGoal = new List<State<T>>();
+        }
 
         
         public List<State<T>> PathToGoal

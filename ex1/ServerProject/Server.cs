@@ -14,11 +14,13 @@ namespace ServerProject
         private int port;
         private TcpListener listener;
         private IClientHandler ch;
+        private List<TcpClient> clientsList;
 
         public Server(int port,IClientHandler ch)
         {
             this.port = port;
             this.ch = ch;
+            this.clientsList = new List<TcpClient>();
         }
         public void start()
         {
@@ -34,6 +36,7 @@ namespace ServerProject
                     try
                     {
                         TcpClient client = listener.AcceptTcpClient();
+                        clientsList.Add(client);
                         Console.WriteLine("Got new connection..!");
                         ch.HandleClient(client);
                     }
@@ -41,14 +44,11 @@ namespace ServerProject
                     {
                         break;
                     }
-                    Console.WriteLine("Server stopped");
+                    Console.WriteLine("Server keep listening");
                 }
             });
-            Console.WriteLine("before starting the listening task");
             task.Start();
-            Console.WriteLine("after start the listening task");
             task.Wait();
-            Console.WriteLine("after wait ");
             
         }
         public void Stop()

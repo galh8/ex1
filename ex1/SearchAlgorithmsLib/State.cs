@@ -51,5 +51,11 @@ namespace SearchAlgorithmsLib
 
         }
 
+        public T stateInstance {
+            get { return state; }
+            set { }
+        }
+
+
     }
 }

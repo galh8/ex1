@@ -13,7 +13,7 @@ namespace ServerProject
     {
         private Dictionary<string, ICommand> commands;
         private Model model;
-        private IClientHandler view;
+        //private IClientHandler view;
 
         public Controller()
         {

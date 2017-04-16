@@ -7,7 +7,7 @@ using MazeLib;
 using SearchAlgorithmsLib;
 
 
-namespace ex1a
+namespace ServerProject
 {
     class SearchableMaze : ISearchable<Position>
     {

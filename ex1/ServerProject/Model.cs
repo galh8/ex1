@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MazeLib;
 using MazeGeneratorLib;
 using SearchAlgorithmsLib;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 
 namespace ServerProject
@@ -13,6 +15,8 @@ namespace ServerProject
     class Model : IModel
     {
         private Dictionary<string, string> mazeSolutions;
+        private Dictionary<string, Maze> mazesDictionary;
+        private Dictionary<string, Maze> gamesLobby;
         DFSMazeGenerator mazeGenerator;
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
@@ -20,35 +24,78 @@ namespace ServerProject
         public Model()
         {
             mazeGenerator = new DFSMazeGenerator();
-            BFS<Position> bfsSolver = new BFS<Position>();
-            DFS<Position> dfsSolver = new DFS<Position>();
             mazeSolutions = new Dictionary<string, string>();
+            mazesDictionary = new Dictionary<string, Maze>();
+            gamesLobby = new Dictionary<string, Maze>();
+            bfsSolver = new BFS<Position>();
+            dfsSolver = new DFS<Position>();
         }
-
-        //public void search(string problem)
-        //{
-        //   throw new NotImplementedException();
-        //}
 
         public Maze GenerateMaze(string name, int rows, int cols)
         {
             
             Maze maze = mazeGenerator.Generate(rows, cols);
-            //mazeSolutions.Add(name,"null");
+            mazesDictionary.Add(name, maze);
             return maze;
         }
 
-        public void solve(string name,string algo)
+        public string startGame(string name, int rows, int cols)
         {
+            Maze maze = mazeGenerator.Generate(rows, cols);
+            StringBuilder gameName = new StringBuilder();
+            gameName.Append("name"); gameName.Append("game");
+            mazesDictionary.Add(gameName.ToString(), maze);
+            //adding the game to the lobby till someone asks to join
+            gamesLobby.Add(name, maze);
+
+            return "blalbla";
+        }
+        
+        public string getListOfGames()
+        {
+            List<string> gamesList = new List<string>(this.gamesLobby.Keys);
+
+            return JsonConvert.SerializeObject(gamesList);
+        }
+        
+
+        public string solve(string name,string algo)
+        {
+            //checks if the solution is already exists.
             if (mazeSolutions.ContainsKey(name))
             {
-                return;
+                return mazeSolutions[name];
             }
+            //if there is no existing solution - solving it. 
             else
             {
-                
+                Maze maze = mazesDictionary[name];
+                SearchableMaze searchableMaze = new SearchableMaze(maze);
+                JObject solveObj = new JObject();
+                solveObj["Name"] = name;
+
+                if (String.Compare(algo,"bfs") == 0)
+                {
+                    Solution<Position> bfsSolution = new PositionSolution();
+                    bfsSolution = bfsSolver.search(searchableMaze);
+                    //Json
+                    solveObj["Solution"] = bfsSolution.ToString();
+                    solveObj["NodesEvaluated"] = bfsSolver.getNumberOfNodesEvaluated().ToString();
+                }
+                else
+                {
+                    Solution<Position> dfsSolution = new PositionSolution();
+                    dfsSolution = dfsSolver.search(searchableMaze);
+                    //Json                   
+                    solveObj["Solution"] = dfsSolution.ToString();
+                    solveObj["NodesEvaluated"] = dfsSolver.getNumberOfNodesEvaluated().ToString();
+                }
+                //adding the solution to the dictionary.
+                mazeSolutions.Add(name, solveObj.ToString());
+                return solveObj.ToString();
             }
 
         }
+
     }
 }
