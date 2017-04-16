@@ -20,7 +20,7 @@ namespace ServerProject
             model = new Model();
             commands = new Dictionary<string, ICommand>();
             commands.Add("generate", new GenerateMazeCommand(model));
-            //....
+            commands.Add("solve", new SolveMazeCommand(model));
         }
 
         public string executeCommand(string commandLine, TcpClient client)

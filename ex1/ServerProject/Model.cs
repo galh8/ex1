@@ -76,18 +76,16 @@ namespace ServerProject
 
                 if (String.Compare(algo,"bfs") == 0)
                 {
-                    Solution<Position> bfsSolution = new PositionSolution();
-                    bfsSolution = bfsSolver.search(searchableMaze);
+                    Solution<Position> bfsSolution = bfsSolver.search(searchableMaze);
                     //Json
-                    solveObj["Solution"] = bfsSolution.ToString();
+                    solveObj["Solution"] = calculateSolution(bfsSolution);
                     solveObj["NodesEvaluated"] = bfsSolver.getNumberOfNodesEvaluated().ToString();
                 }
                 else
                 {
-                    Solution<Position> dfsSolution = new PositionSolution();
-                    dfsSolution = dfsSolver.search(searchableMaze);
+                    Solution<Position> dfsSolution = dfsSolver.search(searchableMaze);
                     //Json                   
-                    solveObj["Solution"] = dfsSolution.ToString();
+                    solveObj["Solution"] = calculateSolution(dfsSolution);
                     solveObj["NodesEvaluated"] = dfsSolver.getNumberOfNodesEvaluated().ToString();
                 }
                 //adding the solution to the dictionary.
@@ -97,5 +95,40 @@ namespace ServerProject
 
         }
 
+        private string calculateSolution(Solution<Position> solution)
+        {
+            StringBuilder pathToReturn = new StringBuilder();
+            foreach (State<Position> position in solution.PathToGoal)
+            {
+                //if we came from the same row
+                if (position.stateInstance.Row == position.CameFrom.stateInstance.Row)
+                {
+                    if (position.stateInstance.Col > position.CameFrom.stateInstance.Col)
+                    {
+                        pathToReturn.Append("1");
+                    }
+                    else
+                    {
+                        pathToReturn.Append("0");
+                    }
+                }
+                //if we came from the same col
+                else
+                {
+                    if (position.stateInstance.Row > position.CameFrom.stateInstance.Row)
+                    {
+                        pathToReturn.Append("3");
+                    }
+                    else
+                    {
+                        pathToReturn.Append("2");
+                    }
+                }
+
+            }
+            return pathToReturn.ToString();
+        }
     }
+
+
 }
