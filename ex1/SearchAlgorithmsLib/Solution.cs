@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MazeLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,8 @@ namespace SearchAlgorithmsLib
         pathToGoal = new List<State<T>>();
         }
 
-        
+        public State<T> blat;
+
         public List<State<T>> PathToGoal
         {
             get; set; 

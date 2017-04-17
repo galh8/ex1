@@ -33,8 +33,9 @@ namespace ServerProject
 
         public Maze GenerateMaze(string name, int rows, int cols)
         {
-            
+
             Maze maze = mazeGenerator.Generate(rows, cols);
+            maze.Name = name;
             mazesDictionary.Add(name, maze);
             return maze;
         }
@@ -50,18 +51,19 @@ namespace ServerProject
 
             return "blalbla";
         }
-        
+
         public string getListOfGames()
         {
             List<string> gamesList = new List<string>(this.gamesLobby.Keys);
 
             return JsonConvert.SerializeObject(gamesList);
         }
-        
 
-        public string solve(string name,string algo)
+
+        public string solve(string name, string algo)
         {
-            //checks if the solution is already exists.
+            //return "Hello";
+            ////checks if the solution is already exists.
             if (mazeSolutions.ContainsKey(name))
             {
                 return mazeSolutions[name];
@@ -74,7 +76,7 @@ namespace ServerProject
                 JObject solveObj = new JObject();
                 solveObj["Name"] = name;
 
-                if (String.Compare(algo,"bfs") == 0)
+                if (String.Compare(algo, "bfs") == 0)
                 {
                     Solution<Position> bfsSolution = bfsSolver.search(searchableMaze);
                     //Json
@@ -98,9 +100,22 @@ namespace ServerProject
         private string calculateSolution(Solution<Position> solution)
         {
             StringBuilder pathToReturn = new StringBuilder();
+
+            Console.WriteLine(solution.blat);
+
+
+            Console.WriteLine(solution.blat.stateInstance);
+
+
             foreach (State<Position> position in solution.PathToGoal)
             {
-                //if we came from the same row
+
+                //            //if we came from the same row
+                State<Position> posi = position;
+
+                Position pos = posi.stateInstance;
+
+
                 if (position.stateInstance.Row == position.CameFrom.stateInstance.Row)
                 {
                     if (position.stateInstance.Col > position.CameFrom.stateInstance.Col)
@@ -128,7 +143,7 @@ namespace ServerProject
             }
             return pathToReturn.ToString();
         }
-    }
+            }
+        }
 
 
-}

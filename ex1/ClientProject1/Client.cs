@@ -35,70 +35,74 @@ namespace ClientProject
             //    commandLine.Append(" ");
             //}
 
-            //using (NetworkStream stream = client.GetStream())
-            //using (StreamReader reader = new StreamReader(stream))
-            //using (StreamWriter writer = new StreamWriter(stream))
-            //{
-
-            //    Thread sender = new Thread(delegate ()
-            //{
-
-            //    {
-            //        Console.WriteLine("type a command");
-            //        string command = Console.ReadLine();
-            //        writer.WriteLine(command);
-            //        writer.Flush();
-            //        //writer.WriteLine("");
-
-            //        // Thread.Sleep(3000)
-            //    }
-            //});
-
-
-            //    Thread receiver = new Thread(delegate ()
-            //    {
-
-            //        {
-            //            while (true)
-            //            {
-            //                //Console.WriteLine("Starting client");
-            //                string result = reader.ReadLine();
-            //                Console.WriteLine(result);
-            //            }
-            //        }
-            //    });
-            //    sender.Start();
-            //    sender.Join();
-            //    receiver.Start();
-            //    receiver.Join();
-            //}
-
-
-
             using (NetworkStream stream = client.GetStream())
             using (StreamReader reader = new StreamReader(stream))
             using (StreamWriter writer = new StreamWriter(stream))
             {
-                while (true)
+
+                Thread sender = new Thread(delegate ()
+            {
+
                 {
-                    // Send data to server
+                    while (true)
+                    { 
                     Console.WriteLine("type a command");
                     string command = Console.ReadLine();
                     writer.WriteLine(command);
                     writer.Flush();
+                        //writer.WriteLine("");
 
-                    if (String.Compare(command, "close") == 0)
-                    {
-                        //need to add here something of course.
-                        break;
+                        // Thread.Sleep(3000)
                     }
-
-                    // Get result from server
-                    string result = reader.ReadLine();
-                    Console.WriteLine("debug massage: Result = {0}", result);
                 }
+            });
+
+
+                Thread receiver = new Thread(delegate ()
+                {
+
+                    {
+                        while (true)
+                        {
+                            //Console.WriteLine("Starting client");
+                            string result = reader.ReadLine();
+                            Console.WriteLine(result);
+                        }
+                    }
+                });
+                sender.Start();
+                
+                receiver.Start();
+                receiver.Join();
+                sender.Join();
             }
-            client.Close();
+
+
+
+            //using (NetworkStream stream = client.GetStream())
+            //using (StreamReader reader = new StreamReader(stream))
+            //using (StreamWriter writer = new StreamWriter(stream))
+            //{
+            //    while (true)
+            //    {
+            //        // Send data to server
+            //        Console.WriteLine("type a command");
+            //        string command = Console.ReadLine();
+            //        writer.WriteLine(command);
+            //        writer.Flush();
+
+            //        if (String.Compare(command, "close") == 0)
+            //        {
+            //            //need to add here something of course.
+            //            break;
+            //        }
+
+            //        // Get result from server
+            //        string result = reader.ReadLine();
+            //        Console.Write( result);
+            //    }
+            //}
+            //client.Close();
 
 
             //using (NetworkStream stream = client.GetStream())

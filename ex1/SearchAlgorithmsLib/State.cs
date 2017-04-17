@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MazeLib;
 namespace SearchAlgorithmsLib
 {
-    public class State<T>
+    public class State<T> //where T : Position
     {
         private T state;
         private double cost;
