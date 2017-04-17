@@ -33,6 +33,8 @@ namespace ServerProject
                             //Console.WriteLine(commandLine);
                             string result = controller.executeCommand(commandLine, client);
                             Console.WriteLine("the result we wanna send: {0}", result);
+                            result += '\n';
+                            result += '@';
                             writer.WriteLine(result);
                             writer.Flush();
                         }

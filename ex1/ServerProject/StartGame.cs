@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Sockets;
 
 namespace ServerProject
 {
-    interface ICommand
+    //go back when the game has already 2 players
+    public class StartGame
     {
-        string Execute(string[] args, TcpClient client = null);
+
     }
 }

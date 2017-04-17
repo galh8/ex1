@@ -1,5 +1,4 @@
-﻿using MazeLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +11,13 @@ namespace SearchAlgorithmsLib
         protected List<State<T>> pathToGoal;
         public Solution()
         {
-        pathToGoal = new List<State<T>>();
+            pathToGoal = new List<State<T>>();
         }
 
-        public State<T> blat;
-
-        public List<State<T>> PathToGoal
+        
+        public List<State<T>> PathToGoal() 
         {
-            get; set; 
+                return pathToGoal;
         }
 
         public override string ToString()

@@ -11,22 +11,21 @@ using SearchAlgorithmsLib;
 
 namespace ServerProject.commands
 {
-    class SolveMazeCommand : ICommand
+    class PlayCommand : ICommand
     {
         private Model model;
-        public SolveMazeCommand(Model model)
+        public PlayCommand(Model model)
         {
             this.model = model;
         }
 
         public string Execute(string[] args, TcpClient client)
         {
-            string mazeName = args[0];
-            int algo = int.Parse(args[1]);
+            string direction = args[0];
 
-            string solution = model.solve(mazeName,algo);
-
-            return solution;
+            //makes the move and returns the direction the other player moved.
+            string otherPlayerDirection = model.play(direction, client);
+            return otherPlayerDirection;
         }
     }
 }

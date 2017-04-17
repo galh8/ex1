@@ -27,98 +27,84 @@ namespace ClientProject
             client.Connect(ep);
             Console.WriteLine("Client connected");
 
-            //StringBuilder commandLine = new StringBuilder();
-            ////building a string of the args.
-            //for (int i = 0; i < args.Length; i++)
+            //using (NetworkStream stream = client.GetStream())
+            //using (StreamReader reader = new StreamReader(stream))
+            //using (StreamWriter writer = new StreamWriter(stream))
             //{
-            //    commandLine.Append(args[i]);
-            //    commandLine.Append(" ");
+
+            //Thread sender = new Thread(delegate ()
+            //{
+
+            //    {
+            //        Console.WriteLine("type a command");
+            //        string command = Console.ReadLine();
+            //        writer.WriteLine(command);
+            //        writer.Flush();
+            //    }
+            //});
+
+
+            //    Thread receiver = new Thread(delegate ()
+            //    {
+
+            //        {
+            //            while (true)
+            //            {
+            //                //Console.WriteLine("Starting client");
+            //                string result = reader.ReadLine();
+            //                Console.WriteLine(result);
+            //            }
+            //        }
+            //    });
+
+            //    do
+            //    {
+            //        sender.Start();
+            //        sender.Join();
+            //        receiver.Start();
+            //        receiver.Join();
+            //    } while (true);
             //}
+
+
 
             using (NetworkStream stream = client.GetStream())
             using (StreamReader reader = new StreamReader(stream))
             using (StreamWriter writer = new StreamWriter(stream))
             {
-
-                Thread sender = new Thread(delegate ()
-            {
-
+                while (true)
                 {
-                    while (true)
-                    { 
-                    Console.WriteLine("type a command");
+                    // Sending a command to server
+                    Console.Write("Please enter a command: ");
                     string command = Console.ReadLine();
                     writer.WriteLine(command);
                     writer.Flush();
-                        //writer.WriteLine("");
+                    Console.WriteLine("{0}", command);
 
-                        // Thread.Sleep(3000)
-                    }
-                }
-            });
-
-
-                Thread receiver = new Thread(delegate ()
-                {
-
+                    //reading a reply from server
+                    while (true)
                     {
-                        while (true)
+                        string feedback = reader.ReadLine();
+                        if (reader.Peek() == '@')
                         {
-                            //Console.WriteLine("Starting client");
-                            string result = reader.ReadLine();
-                            Console.WriteLine(result);
+                            feedback.TrimEnd('\n');
+                            break;
                         }
+                        Console.WriteLine("{0}", feedback);
                     }
-                });
-                sender.Start();
-                
-                receiver.Start();
-                receiver.Join();
-                sender.Join();
+
+
+                    //************TODO - ADD a condition of receiving empty jason obj to stop loop*****
+                }
+
+
+                //get result from server
+                //string result = FromJSON(reader.read());
+                // Get result from server
+                //int result = reader.ReadInt32();
+                //Console.WriteLine("Result = {0}", result);
             }
-
-
-
-            //using (NetworkStream stream = client.GetStream())
-            //using (StreamReader reader = new StreamReader(stream))
-            //using (StreamWriter writer = new StreamWriter(stream))
-            //{
-            //    while (true)
-            //    {
-            //        // Send data to server
-            //        Console.WriteLine("type a command");
-            //        string command = Console.ReadLine();
-            //        writer.WriteLine(command);
-            //        writer.Flush();
-
-            //        if (String.Compare(command, "close") == 0)
-            //        {
-            //            //need to add here something of course.
-            //            break;
-            //        }
-
-            //        // Get result from server
-            //        string result = reader.ReadLine();
-            //        Console.Write( result);
-            //    }
-            //}
-            //client.Close();
-
-
-            //using (NetworkStream stream = client.GetStream())
-            //using (StreamReader reader = new StreamReader(stream))
-            //using (StreamWriter writer = new StreamWriter(stream))
-            //{
-            //    Console.WriteLine("Starting client");
-            //    writer.WriteLine(commandLine.ToString());
-            //   // Console.WriteLine("BLABLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            //    //Console.WriteLine("Before sleeping");
-            //    // System.Threading.Thread.Sleep(3000);
-            //    //string result = reader.ReadLine();
-            //   // Console.WriteLine("Result = {0} ", result);
-
-            //}
-
+            client.Close();
 
         }
 

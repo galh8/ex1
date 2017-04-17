@@ -11,22 +11,20 @@ using SearchAlgorithmsLib;
 
 namespace ServerProject.commands
 {
-    class SolveMazeCommand : ICommand
+    class JoinCommand : ICommand
     {
         private Model model;
-        public SolveMazeCommand(Model model)
+        public JoinCommand(Model model)
         {
             this.model = model;
         }
 
         public string Execute(string[] args, TcpClient client)
         {
-            string mazeName = args[0];
-            int algo = int.Parse(args[1]);
 
-            string solution = model.solve(mazeName,algo);
+            string joinedCompleted = model.join(args[0],client);
 
-            return solution;
+            return joinedCompleted;
         }
     }
 }

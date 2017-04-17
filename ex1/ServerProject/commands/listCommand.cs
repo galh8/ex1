@@ -9,7 +9,7 @@ using MazeLib;
 using Newtonsoft.Json;
 using SearchAlgorithmsLib;
 
-namespace ServerProject
+namespace ServerProject.commands
 {
     class listCommand : ICommand
     {

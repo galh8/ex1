@@ -8,7 +8,7 @@ using MazeGeneratorLib;
 using MazeLib;
 using Newtonsoft.Json;
 
-namespace ServerProject
+namespace ServerProject.commands
 {
     class GenerateMazeCommand : ICommand
     {
@@ -17,13 +17,16 @@ namespace ServerProject
         {
             this.model = model;
         }
-        public string Execute(string[] args,TcpClient client)
+
+
+        public string Execute(string[] args, TcpClient client)
         {
             string name = args[0];
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
 
             Maze maze = model.GenerateMaze(name, rows, cols);
+            maze.Name = name;
             Console.WriteLine("maze created");
             return maze.ToJSON();
             
