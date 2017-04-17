@@ -54,9 +54,9 @@ namespace SearchAlgorithmsLib
         {
             Solution<T> solution = new Solution<T>();
             State<T> currentState = path.Pop();
-            while (path.Count != 1 )
+            while (path.Count != 0 )
             {
-                currentState.CameFrom = path.Peek();
+                //currentState.CameFrom = path.Peek();
                 solution.insertNode(currentState);
                 currentState = path.Pop();
             }
