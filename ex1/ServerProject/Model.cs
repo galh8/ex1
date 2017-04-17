@@ -22,6 +22,7 @@ namespace ServerProject
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
 
+
         public Model()
         {
             mazeGenerator = new DFSMazeGenerator();
