@@ -164,11 +164,11 @@ namespace ServerProject
                 {
                     if (position.getInstance().Row > position.CameFrom.getInstance().Row)
                     {
-                        pathToReturn.Append("3");
+                        pathToReturn.Append("2");
                     }
                     else
                     {
-                        pathToReturn.Append("2");
+                        pathToReturn.Append("3");
                     }
                 }
 
