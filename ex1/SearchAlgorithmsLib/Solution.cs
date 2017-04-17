@@ -15,9 +15,9 @@ namespace SearchAlgorithmsLib
         }
 
         
-        public List<State<T>> PathToGoal
+        public List<State<T>> PathToGoal() 
         {
-            get; set; 
+                return pathToGoal;
         }
 
         public override string ToString()

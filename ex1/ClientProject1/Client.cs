@@ -79,10 +79,9 @@ namespace ClientProject
                     string command = Console.ReadLine();
                     writer.WriteLine(command);
                     writer.Flush();
-                    Console.WriteLine("after sending command");
                     Console.WriteLine("{0}", command);
 
-                    //reading a reply from server   
+                    //reading a reply from server
                     while (true)
                     {
                         string feedback = reader.ReadLine();

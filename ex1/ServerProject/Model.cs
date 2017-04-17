@@ -120,7 +120,7 @@ namespace ServerProject
                     Solution<Position> bfsSolution = new Solution<Position>();
                     bfsSolution = bfsSolver.search(searchableMaze);
                     //Json
-                    solveObj["Solution"] = calculateSolution(bfsSolution.PathToGoal);
+                    solveObj["Solution"] = calculateSolution(bfsSolution.PathToGoal());
                     solveObj["NodesEvaluated"] = bfsSolver.getNumberOfNodesEvaluated().ToString();
                 }
                 else
@@ -128,7 +128,7 @@ namespace ServerProject
                     Solution<Position> dfsSolution = new Solution<Position>();
                     dfsSolution = dfsSolver.search(searchableMaze);
                     //Json                   
-                    solveObj["Solution"] = calculateSolution(dfsSolution.PathToGoal);
+                    solveObj["Solution"] = calculateSolution(dfsSolution.PathToGoal());
                     solveObj["NodesEvaluated"] = dfsSolver.getNumberOfNodesEvaluated().ToString();
                 }
                 //adding the solution to the dictionary.
