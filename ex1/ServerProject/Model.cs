@@ -164,16 +164,20 @@ namespace ServerProject
                 {
                     if (position.getInstance().Row > position.CameFrom.getInstance().Row)
                     {
-                        pathToReturn.Append("2");
+                        pathToReturn.Append("3");
                     }
                     else
                     {
-                        pathToReturn.Append("3");
+                        pathToReturn.Append("2");
                     }
                 }
 
             }
-            return pathToReturn.ToString();
+
+            //returning it back reversed
+            char[] arrayToReverse = pathToReturn.ToString().ToCharArray();
+            Array.Reverse(arrayToReverse);
+            return new string(arrayToReverse);
         }
     }
 }
