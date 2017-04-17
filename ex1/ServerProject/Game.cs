@@ -41,6 +41,13 @@ namespace ServerProject
             //OngameNeedsToStart();
         }
 
+        public TcpClient getOtherPlayer(TcpClient player)
+        {
+            if (player.Equals(gameCreatorPlayer))
+                return secondPlayer;
+            return gameCreatorPlayer;
+        }
+
         //protected virtual void OngameNeedsToStart()
         //{
         //    if (gameNeedsToStart != null)

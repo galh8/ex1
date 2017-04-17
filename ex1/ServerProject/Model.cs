@@ -17,7 +17,7 @@ namespace ServerProject
         private Dictionary<string, string> mazeSolutions;
         private Dictionary<string, Maze> mazesDictionary;
         private Dictionary<string, Game> gamesLobby;
-        private Dictionary<string,Game> gamesBeingPlayed;
+        private Dictionary<TcpClient,Game> gamesBeingPlayed;
         DFSMazeGenerator mazeGenerator;
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
@@ -69,7 +69,7 @@ namespace ServerProject
             /*pop out the game out of the lobby and moves it 
             to another dictonery of a being played games */
             gamesLobby.Remove(gameName);
-            gamesBeingPlayed.Add(gameName, currentGAME);
+            gamesBeingPlayed.Add(otherPlayer, currentGAME);
 
             //notify that another player joined the game.
             currentGAME.joinAnotherPlayer(otherPlayer);
@@ -77,14 +77,14 @@ namespace ServerProject
             return currentGAME.PlayedMaze().ToJSON();
         }
 
-        public string play(string gameName, TcpClient otherPlayer)
+        public string play(string direction, TcpClient otherPlayer)
         {
-            Game currentGAME = gamesLobby[gameName];
+            Game currentGAME = gamesBeingPlayed[otherPlayer];
 
             /*pop out the game out of the lobby and moves it 
             to another dictonery of a being played games */
-            gamesLobby.Remove(gameName);
-            gamesBeingPlayed.Add(gameName, currentGAME);
+            //gamesLobby.Remove(direction);
+           // gamesBeingPlayed.Add(direction, currentGAME);
 
             //notify that another player joined the game.
             currentGAME.joinAnotherPlayer(otherPlayer);
