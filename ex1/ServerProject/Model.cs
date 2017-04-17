@@ -74,7 +74,7 @@ namespace ServerProject
             //notify that another player joined the game.
             currentGAME.joinAnotherPlayer(otherPlayer);
 
-            return currentGAME.PlayedMaze.ToJSON();
+            return currentGAME.PlayedMaze().ToJSON();
         }
 
         public string play(string gameName, TcpClient otherPlayer)
@@ -89,7 +89,7 @@ namespace ServerProject
             //notify that another player joined the game.
             currentGAME.joinAnotherPlayer(otherPlayer);
 
-            return currentGAME.PlayedMaze.ToJSON();
+            return currentGAME.PlayedMaze().ToJSON();
         }
 
 

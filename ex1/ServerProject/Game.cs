@@ -49,14 +49,14 @@ namespace ServerProject
         //    }
         //}
 
-        public Maze PlayedMaze
+        public Maze PlayedMaze()
         {
-            get;
+            return playedMaze;
         }
 
-        public bool CanStart
+        public bool CanStart()
         {
-            get;
+            return canStart;
         }
 
     }

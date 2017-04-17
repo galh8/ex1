@@ -28,9 +28,9 @@ namespace ServerProject.commands
 
             Game currentGame = model.startGame(gameName, rows, cols,client);
 
-            while (!currentGame.CanStart) { }
+            while (!currentGame.CanStart()) { }
 
-            return currentGame.PlayedMaze.ToJSON();
+            return currentGame.PlayedMaze().ToJSON();
         }
 
         //public void OngameNeedsToStart(object Sorce, EventArgs e)

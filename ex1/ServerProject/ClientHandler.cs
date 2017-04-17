@@ -32,7 +32,7 @@ namespace ServerProject
                             string commandLine = reader.ReadLine();
                             //Console.WriteLine(commandLine);
                             string result = controller.executeCommand(commandLine, client);
-                            Console.WriteLine("the result we wanna send: {0}", result);
+                            //Console.WriteLine("the result we wanna send: {0}", result);
                             result += '\n';
                             result += '@';
                             writer.WriteLine(result);
@@ -43,7 +43,7 @@ namespace ServerProject
                     //client.Close();
             });
             handleClient.Start();
-            handleClient.Wait();
+            //handleClient.Wait();
         }
     }
 }
