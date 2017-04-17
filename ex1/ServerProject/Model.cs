@@ -160,7 +160,7 @@ namespace ServerProject
                     }
                 }
                 //if we came from the same col
-                else
+                else if(position.getInstance().Row != position.CameFrom.getInstance().Row)
                 {
                     if (position.getInstance().Row > position.CameFrom.getInstance().Row)
                     {
