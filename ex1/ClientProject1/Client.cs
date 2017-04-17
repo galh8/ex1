@@ -22,6 +22,8 @@ namespace ClientProject
 
         static void Main(string[] args)
         {
+            //int Port =  int.Parse(Console.ReadLine());
+
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 49251);
             TcpClient client = new TcpClient();
             client.Connect(ep);
