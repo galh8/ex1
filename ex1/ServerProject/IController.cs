@@ -13,6 +13,6 @@ namespace ServerProject
         void setModel(IModel m);
         void setView(IClientHandler v);
        // void setSolution(Solution<T> s);
-        string executeCommand(String problem,TcpClient client );
+        string executeCommand(String problem, TcpClient client);
     }
 }

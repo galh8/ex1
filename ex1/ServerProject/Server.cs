@@ -16,7 +16,7 @@ namespace ServerProject
         private IClientHandler ch;
         private List<TcpClient> clientsList;
 
-        public Server(int port,IClientHandler ch)
+        public Server(int port, IClientHandler ch)
         {
             this.port = port;
             this.ch = ch;
@@ -31,7 +31,7 @@ namespace ServerProject
 
             Task task = new Task(() =>
             {
-                while(true)
+                while (true)
                 {
                     try
                     {
@@ -40,7 +40,7 @@ namespace ServerProject
                         Console.WriteLine("Got new connection..!");
                         ch.HandleClient(client);
                     }
-                    catch(SocketException)
+                    catch (SocketException)
                     {
                         break;
                     }
@@ -49,7 +49,7 @@ namespace ServerProject
             });
             task.Start();
             task.Wait();
-            
+
         }
         public void Stop()
         {

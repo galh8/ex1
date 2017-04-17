@@ -8,7 +8,7 @@ using MazeGeneratorLib;
 using SearchAlgorithmsLib;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-
+using System.Net.Sockets;
 
 namespace ServerProject
 {
@@ -16,7 +16,8 @@ namespace ServerProject
     {
         private Dictionary<string, string> mazeSolutions;
         private Dictionary<string, Maze> mazesDictionary;
-        private Dictionary<string, Maze> gamesLobby;
+        private Dictionary<string, Game> gamesLobby;
+        private Dictionary<string,Game> gamesBeingPlayed;
         DFSMazeGenerator mazeGenerator;
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
@@ -26,40 +27,80 @@ namespace ServerProject
             mazeGenerator = new DFSMazeGenerator();
             mazeSolutions = new Dictionary<string, string>();
             mazesDictionary = new Dictionary<string, Maze>();
-            gamesLobby = new Dictionary<string, Maze>();
+            gamesLobby = new Dictionary<string, Game>();
+            gamesBeingPlayed = new Dictionary<string, Game>(); 
             bfsSolver = new BFS<Position>();
             dfsSolver = new DFS<Position>();
         }
 
         public Maze GenerateMaze(string name, int rows, int cols)
         {
-            
+
             Maze maze = mazeGenerator.Generate(rows, cols);
             mazesDictionary.Add(name, maze);
             return maze;
         }
 
-        public string startGame(string name, int rows, int cols)
+        public Game startGame(string name, int rows, int cols, System.Net.Sockets.TcpClient firstPlayer)
         {
             Maze maze = mazeGenerator.Generate(rows, cols);
-            StringBuilder gameName = new StringBuilder();
-            gameName.Append("name"); gameName.Append("game");
-            mazesDictionary.Add(gameName.ToString(), maze);
-            //adding the game to the lobby till someone asks to join
-            gamesLobby.Add(name, maze);
+            maze.Name = name;
+            var newGame = new Game(firstPlayer,maze); //publisher
 
-            return "blalbla";
+            //adding the new maze to the maze dictionary.
+            mazesDictionary.Add(name, maze);
+            
+            //adding the game to the lobby till someone asks to join
+            gamesLobby.Add(name, newGame);
+
+            //subscriber
+            //newGame.gameNeedsToStart += startGame.OngameNeedsToStart;
+
+            //newGame.PlayerJoind(client);
+
+            return newGame;
         }
-        
+
+        public string join(string gameName, System.Net.Sockets.TcpClient otherPlayer)
+        {
+            Game currentGAME = gamesLobby[gameName];
+
+            /*pop out the game out of the lobby and moves it 
+            to another dictonery of a being played games */
+            gamesLobby.Remove(gameName);
+            gamesBeingPlayed.Add(gameName, currentGAME);
+
+            //notify that another player joined the game.
+            currentGAME.joinAnotherPlayer(otherPlayer);
+
+            return currentGAME.PlayedMaze.ToJSON();
+        }
+
+        public string play(string gameName, TcpClient otherPlayer)
+        {
+            Game currentGAME = gamesLobby[gameName];
+
+            /*pop out the game out of the lobby and moves it 
+            to another dictonery of a being played games */
+            gamesLobby.Remove(gameName);
+            gamesBeingPlayed.Add(gameName, currentGAME);
+
+            //notify that another player joined the game.
+            currentGAME.joinAnotherPlayer(otherPlayer);
+
+            return currentGAME.PlayedMaze.ToJSON();
+        }
+
+
         public string getListOfGames()
         {
             List<string> gamesList = new List<string>(this.gamesLobby.Keys);
 
             return JsonConvert.SerializeObject(gamesList);
         }
-        
 
-        public string solve(string name,string algo)
+
+        public string solve(string name, int algo)
         {
             //checks if the solution is already exists.
             if (mazeSolutions.ContainsKey(name))
@@ -74,18 +115,20 @@ namespace ServerProject
                 JObject solveObj = new JObject();
                 solveObj["Name"] = name;
 
-                if (String.Compare(algo,"bfs") == 0)
+                if (algo == 0)
                 {
-                    Solution<Position> bfsSolution = bfsSolver.search(searchableMaze);
+                    Solution<Position> bfsSolution = new Solution<Position>();
+                    bfsSolution = bfsSolver.search(searchableMaze);
                     //Json
-                    solveObj["Solution"] = calculateSolution(bfsSolution);
+                    solveObj["Solution"] = calculateSolution(bfsSolution.PathToGoal);
                     solveObj["NodesEvaluated"] = bfsSolver.getNumberOfNodesEvaluated().ToString();
                 }
                 else
                 {
-                    Solution<Position> dfsSolution = dfsSolver.search(searchableMaze);
+                    Solution<Position> dfsSolution = new Solution<Position>();
+                    dfsSolution = dfsSolver.search(searchableMaze);
                     //Json                   
-                    solveObj["Solution"] = calculateSolution(dfsSolution);
+                    solveObj["Solution"] = calculateSolution(dfsSolution.PathToGoal);
                     solveObj["NodesEvaluated"] = dfsSolver.getNumberOfNodesEvaluated().ToString();
                 }
                 //adding the solution to the dictionary.
@@ -95,15 +138,19 @@ namespace ServerProject
 
         }
 
-        private string calculateSolution(Solution<Position> solution)
+        private string calculateSolution(List<State<Position>> pathToGoal)
         {
             StringBuilder pathToReturn = new StringBuilder();
-            foreach (State<Position> position in solution.PathToGoal)
+
+            List<Position> newList = new List<Position>();
+
+            foreach (State<Position> position in pathToGoal)
             {
                 //if we came from the same row
-                if (position.stateInstance.Row == position.CameFrom.stateInstance.Row)
+
+                if (position.getInstance().Row == position.CameFrom.getInstance().Row)
                 {
-                    if (position.stateInstance.Col > position.CameFrom.stateInstance.Col)
+                    if (position.getInstance().Col > position.CameFrom.getInstance().Col)
                     {
                         pathToReturn.Append("1");
                     }
@@ -115,7 +162,7 @@ namespace ServerProject
                 //if we came from the same col
                 else
                 {
-                    if (position.stateInstance.Row > position.CameFrom.stateInstance.Row)
+                    if (position.getInstance().Row > position.CameFrom.getInstance().Row)
                     {
                         pathToReturn.Append("3");
                     }
@@ -129,6 +176,6 @@ namespace ServerProject
             return pathToReturn.ToString();
         }
     }
-
-
 }
+
+

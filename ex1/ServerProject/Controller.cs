@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using ServerProject.commands;
 
 namespace ServerProject
 {
@@ -21,7 +22,12 @@ namespace ServerProject
             commands = new Dictionary<string, ICommand>();
             commands.Add("generate", new GenerateMazeCommand(model));
             commands.Add("solve", new SolveMazeCommand(model));
+            commands.Add("join", new JoinCommand(model));
+            commands.Add("start", new StartGameCommand(model));
+            commands.Add("list", new listCommand(model));
+
         }
+
 
         public string executeCommand(string commandLine, TcpClient client)
         {

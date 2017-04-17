@@ -11,7 +11,7 @@ namespace SearchAlgorithmsLib
         protected List<State<T>> pathToGoal;
         public Solution()
         {
-        pathToGoal = new List<State<T>>();
+            pathToGoal = new List<State<T>>();
         }
 
         

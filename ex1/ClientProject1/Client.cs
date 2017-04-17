@@ -27,20 +27,12 @@ namespace ClientProject
             client.Connect(ep);
             Console.WriteLine("Client connected");
 
-            //StringBuilder commandLine = new StringBuilder();
-            ////building a string of the args.
-            //for (int i = 0; i < args.Length; i++)
-            //{
-            //    commandLine.Append(args[i]);
-            //    commandLine.Append(" ");
-            //}
-
             //using (NetworkStream stream = client.GetStream())
             //using (StreamReader reader = new StreamReader(stream))
             //using (StreamWriter writer = new StreamWriter(stream))
             //{
 
-            //    Thread sender = new Thread(delegate ()
+            //Thread sender = new Thread(delegate ()
             //{
 
             //    {
@@ -48,9 +40,6 @@ namespace ClientProject
             //        string command = Console.ReadLine();
             //        writer.WriteLine(command);
             //        writer.Flush();
-            //        //writer.WriteLine("");
-
-            //        // Thread.Sleep(3000)
             //    }
             //});
 
@@ -67,10 +56,14 @@ namespace ClientProject
             //            }
             //        }
             //    });
-            //    sender.Start();
-            //    sender.Join();
-            //    receiver.Start();
-            //    receiver.Join();
+
+            //    do
+            //    {
+            //        sender.Start();
+            //        sender.Join();
+            //        receiver.Start();
+            //        receiver.Join();
+            //    } while (true);
             //}
 
 
@@ -81,40 +74,38 @@ namespace ClientProject
             {
                 while (true)
                 {
-                    // Send data to server
-                    Console.WriteLine("type a command");
+                    // Sending a command to server
+                    Console.Write("Please enter a command: ");
                     string command = Console.ReadLine();
                     writer.WriteLine(command);
                     writer.Flush();
+                    Console.WriteLine("after sending command");
+                    Console.WriteLine("{0}", command);
 
-                    if (String.Compare(command, "close") == 0)
+                    //reading a reply from server   
+                    while (true)
                     {
-                        //need to add here something of course.
-                        break;
+                        string feedback = reader.ReadLine();
+                        if (reader.Peek() == '@')
+                        {
+                            feedback.TrimEnd('\n');
+                            break;
+                        }
+                        Console.WriteLine("{0}", feedback);
                     }
 
-                    // Get result from server
-                    string result = reader.ReadLine();
-                    Console.WriteLine("debug massage: Result = {0}", result);
+
+                    //************TODO - ADD a condition of receiving empty jason obj to stop loop*****
                 }
+
+
+                //get result from server
+                //string result = FromJSON(reader.read());
+                // Get result from server
+                //int result = reader.ReadInt32();
+                //Console.WriteLine("Result = {0}", result);
             }
             client.Close();
-
-
-            //using (NetworkStream stream = client.GetStream())
-            //using (StreamReader reader = new StreamReader(stream))
-            //using (StreamWriter writer = new StreamWriter(stream))
-            //{
-            //    Console.WriteLine("Starting client");
-            //    writer.WriteLine(commandLine.ToString());
-            //   // Console.WriteLine("BLABLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            //    //Console.WriteLine("Before sleeping");
-            //    // System.Threading.Thread.Sleep(3000);
-            //    //string result = reader.ReadLine();
-            //   // Console.WriteLine("Result = {0} ", result);
-
-            //}
-
 
         }
 

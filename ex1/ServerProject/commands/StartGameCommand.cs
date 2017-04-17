@@ -9,11 +9,12 @@ using MazeLib;
 using Newtonsoft.Json;
 using SearchAlgorithmsLib;
 
-namespace ServerProject
+namespace ServerProject.commands
 {
     class StartGameCommand : ICommand
     {
         private Model model;
+                
         public StartGameCommand(Model model)
         {
             this.model = model;
@@ -25,10 +26,18 @@ namespace ServerProject
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
 
-            //what to do here?
-            string solution = model.startGame(gameName, rows, cols);
+            Game currentGame = model.startGame(gameName, rows, cols,client);
 
-            return solution;
+            while (!currentGame.CanStart) { }
+
+            return currentGame.PlayedMaze.ToJSON();
         }
+
+        //public void OngameNeedsToStart(object Sorce, EventArgs e)
+        //{
+        //    canStart = true;
+        //}
+
     }
+
 }
