@@ -79,7 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SearchAlgorithmsLib\SearchAlgorithmsLib.csproj">
-      <Project>{60DA5735-6A2C-4CD5-A488-747324CF3125}</Project>
+      <Project>{60da5735-6a2c-4cd5-a488-747324cf3125}</Project>
       <Name>SearchAlgorithmsLib</Name>
     </ProjectReference>
   </ItemGroup>
