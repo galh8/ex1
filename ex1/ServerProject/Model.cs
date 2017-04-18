@@ -70,6 +70,7 @@ namespace ServerProject
             to another dictonery of a being played games */
             gamesLobby.Remove(gameName);
             gamesBeingPlayed.Add(otherPlayer, currentGAME);
+            gamesBeingPlayed.Add(currentGAME.getOtherPlayer, currentGAME);
 
             //notify that another player joined the game.
             currentGAME.joinAnotherPlayer(otherPlayer);
