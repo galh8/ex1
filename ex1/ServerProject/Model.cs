@@ -12,7 +12,7 @@ using System.Net.Sockets;
 
 namespace ServerProject
 {
-    class Model : IModel
+    public class Model : IModel
     {
         private Dictionary<string, string> mazeSolutions;
         private Dictionary<string, Maze> mazesDictionary;
@@ -70,6 +70,7 @@ namespace ServerProject
             to another dictonery of a being played games */
             gamesLobby.Remove(gameName);
             gamesBeingPlayed.Add(otherPlayer, currentGAME);
+            gamesBeingPlayed.Add(currentGAME.getCreatorPlayer(), currentGAME);
 
             //notify that another player joined the game.
             currentGAME.joinAnotherPlayer(otherPlayer);

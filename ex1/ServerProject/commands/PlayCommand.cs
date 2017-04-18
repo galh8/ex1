@@ -17,6 +17,7 @@ namespace ServerProject.commands
     {
         private Model model;
         private IClientHandler clientHendler;
+
         public PlayCommand(IClientHandler clientHendler, Model model)
         {
             this.model = model;

@@ -11,8 +11,10 @@ namespace ServerProject
         static void Main(string[] args)
         {
             IController controller = new Controller();
-            IClientHandler ch = new ClientHandler(controller);
-            Server server = new Server(49251, ch);
+            Model model = new Model();
+            IClientHandler view = new ClientHandler(controller);
+            controller.buildController(model, view);
+            Server server = new Server(49251, view);
             server.start();
         }
     }

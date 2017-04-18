@@ -55,10 +55,9 @@ namespace ServerProject
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
             message += '\n';
-            message += '@';
-            writer.WriteLine(message);
-            writer.Flush();
-
+                message += '@';
+                writer.WriteLine(message);
+                writer.Flush();
         }
     }
 }
