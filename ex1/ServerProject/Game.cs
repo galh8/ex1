@@ -19,6 +19,7 @@ namespace ServerProject
         private System.Net.Sockets.TcpClient gameCreatorPlayer, secondPlayer;
         private bool canStart;
         Maze playedMaze;
+        string name;
 
 
         public Game(System.Net.Sockets.TcpClient firstPlayer,Maze maze)
@@ -26,6 +27,11 @@ namespace ServerProject
             gameCreatorPlayer = firstPlayer;
             playedMaze = maze;
             canStart = false;
+            name = maze.Name;
+        }
+        public string Name
+        {
+            get { return this.name; }
         }
 
         //we declare a delegate to a function which looks like void gameEventHandler(object source, EventArgs e).
@@ -43,7 +49,7 @@ namespace ServerProject
 
         public TcpClient getOtherPlayer(TcpClient player)
         {
-            if (player.Equals(gameCreatorPlayer))
+            if (player == gameCreatorPlayer)
                 return secondPlayer;
             return gameCreatorPlayer;
         }

@@ -17,6 +17,8 @@ namespace ServerProject
         public ClientHandler(IController controller)
         {
             this.controller = controller;
+            //TODO Check if necessary?
+            controller.setView(this);
         }
 
         public void HandleClient(TcpClient client)
@@ -44,6 +46,19 @@ namespace ServerProject
             });
             handleClient.Start();
             //handleClient.Wait();
+        }
+
+        public void notifyClient (string message , TcpClient client)
+        {
+
+            NetworkStream stream = client.GetStream();
+            StreamReader reader = new StreamReader(stream);
+            StreamWriter writer = new StreamWriter(stream);
+            message += '\n';
+            message += '@';
+            writer.WriteLine(message);
+            writer.Flush();
+
         }
     }
 }

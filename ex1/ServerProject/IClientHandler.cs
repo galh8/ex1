@@ -10,5 +10,6 @@ namespace ServerProject
     public interface IClientHandler
     {
         void HandleClient(TcpClient client);
+        void notifyClient(string message, TcpClient client);
     }
 }

@@ -80,6 +80,8 @@ namespace ServerProject
         public string play(string direction, TcpClient otherPlayer)
         {
             Game currentGAME = gamesBeingPlayed[otherPlayer];
+            TcpClient playerToNotify =  currentGAME.getOtherPlayer(otherPlayer);
+            
 
             /*pop out the game out of the lobby and moves it 
             to another dictonery of a being played games */
@@ -87,13 +89,29 @@ namespace ServerProject
            // gamesBeingPlayed.Add(direction, currentGAME);
 
             //notify that another player joined the game.
-            currentGAME.joinAnotherPlayer(otherPlayer);
+            //currentGAME.joinAnotherPlayer(otherPlayer);
 
             return currentGAME.PlayedMaze().ToJSON();
         }
+        public TcpClient getOtherPlayerClient(TcpClient client)
+        {
+            Game currentGAME = gamesBeingPlayed[client];
+            TcpClient otherPlayer = currentGAME.getOtherPlayer(client);
+            return otherPlayer;
+
+        }
+        public string getClientGameName(TcpClient client)
+        {
+            Game currentGAME = gamesBeingPlayed[client];
+            return currentGAME.Name;
+
+        }
+    
 
 
-        public string getListOfGames()
+
+
+    public string getListOfGames()
         {
             List<string> gamesList = new List<string>(this.gamesLobby.Keys);
 
@@ -182,5 +200,6 @@ namespace ServerProject
         }
     }
 }
+
 
 

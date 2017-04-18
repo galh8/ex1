@@ -14,7 +14,7 @@ namespace ServerProject
     {
         private Dictionary<string, ICommand> commands;
         private Model model;
-        //private IClientHandler view;
+        private IClientHandler view;
 
         public Controller()
         {
@@ -25,6 +25,7 @@ namespace ServerProject
             commands.Add("join", new JoinCommand(model));
             commands.Add("start", new StartGameCommand(model));
             commands.Add("list", new listCommand(model));
+            commands.Add("play", new PlayCommand(view ,model));
 
         }
 
@@ -53,7 +54,7 @@ namespace ServerProject
 
         public void setView(IClientHandler v)
         {
-            throw new NotImplementedException();
+            this.view = v;
         }
     }
 }

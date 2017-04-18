@@ -94,6 +94,7 @@ namespace ClientProject
                         }
                         Console.WriteLine("{0}", feedback);
                     }
+                    reader.ReadLine();
 
 
                     //************TODO - ADD a condition of receiving empty jason obj to stop loop*****
@@ -106,6 +107,18 @@ namespace ClientProject
                 //int result = reader.ReadInt32();
                 //Console.WriteLine("Result = {0}", result);
             }
+            //    Thread receiver = new Thread(delegate ()
+            //    {
+
+            //        {
+            //            while (true)
+            //            {
+            //                //Console.WriteLine("Starting client");
+            //                string result = reader.ReadLine();
+            //                Console.WriteLine(result);
+            //            }
+            //        }
+            //    });
             client.Close();
 
         }
