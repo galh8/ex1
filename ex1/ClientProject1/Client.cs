@@ -106,6 +106,18 @@ namespace ClientProject
                 //int result = reader.ReadInt32();
                 //Console.WriteLine("Result = {0}", result);
             }
+            //    Thread receiver = new Thread(delegate ()
+            //    {
+
+            //        {
+            //            while (true)
+            //            {
+            //                //Console.WriteLine("Starting client");
+            //                string result = reader.ReadLine();
+            //                Console.WriteLine(result);
+            //            }
+            //        }
+            //    });
             client.Close();
 
         }
