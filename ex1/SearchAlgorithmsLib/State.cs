@@ -55,6 +55,20 @@ namespace SearchAlgorithmsLib
             return state;
         }
 
+        public static class StatePool
+        {
+            public static Dictionary<T, State<T>> statesDictionary = new Dictionary<T, State<T>>();
 
+            public static State<T> getInstance(T state)
+            {
+                if (statesDictionary.ContainsKey(state))
+                {
+                    return statesDictionary[state];
+                }
+                State<T> newStateToReturn = new State<T>(state);
+                statesDictionary.Add(state, newStateToReturn);
+                return newStateToReturn;
+            }
+        }
     }
 }

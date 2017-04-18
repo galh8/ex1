@@ -107,16 +107,22 @@ namespace ClientProject
                         {
                             while (true)
                             {
-                                string feedback = reader.ReadLine();
-                                if (reader.Peek() == '@')
+                                while (true)
                                 {
-                                    feedback.TrimEnd('\n');
-                                    break;
+                                    string feedback = reader.ReadLine();
+                                    if (reader.Peek() == '@')
+                                    {
+                                        feedback.TrimEnd('\n');
+                                        break;
+                                    }
+                                    Console.WriteLine("{0}", feedback);
                                 }
-                                Console.WriteLine("{0}", feedback);
+                                reader.ReadLine();
                             }
-                            reader.ReadLine();
+                            
                         });
+
+
 
                         
                         Task multiplayerWriter = new Task(() =>

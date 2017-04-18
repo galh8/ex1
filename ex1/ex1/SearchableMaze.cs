@@ -20,7 +20,7 @@ namespace ServerProject
         {
             this.maze = maze;
             adjacencyList = new Dictionary<State<Position>, List<State<Position>>>();
-            initializeSuccessors();
+           // initializeSuccessors();
             this.initialState = new State<Position>(maze.InitialPos);
             this.goalState = new State<Position>(maze.GoalPos);
             
@@ -28,7 +28,45 @@ namespace ServerProject
 
         public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
-            return this.adjacencyList[s];
+            //return this.adjacencyList[s];
+            List<State<Position>> successorsList = new List<State<Position>>();
+            int row = s.getInstance().Row;
+            int col = s.getInstance().Col;
+            //State<Position> currentState = new State<Position>(new Position(row, col));
+            //Left succesor
+            if (isAccessable(row, col - 1))
+            {
+                Position pos = new Position(row, col - 1);
+                State<Position> leftSuccessor = State<Position>.StatePool.getInstance(pos);
+                //State<Position> leftSuccessor = new State<Position>(new Position(row, col - 1));
+                leftSuccessor.Cost = 1;
+                successorsList.Add(leftSuccessor);
+            }
+            //Right succesor
+            if (isAccessable(row, col + 1))
+            {
+                Position pos = new Position(row, col + 1);
+                State<Position> rightSuccessor = State<Position>.StatePool.getInstance(pos);
+                rightSuccessor.Cost = 1;
+                successorsList.Add(rightSuccessor);
+            }
+            //Up succesor
+            if (isAccessable(row + 1, col))
+            {
+                Position pos = new Position(row + 1, col);
+                State<Position> upSuccessor = State<Position>.StatePool.getInstance(pos);
+                upSuccessor.Cost = 1;
+                successorsList.Add(upSuccessor);
+            }
+            //Down succesor
+            if (isAccessable(row - 1, col))
+            {
+                Position pos = new Position(row - 1, col);
+                State<Position> downSuccessor = State<Position>.StatePool.getInstance(pos);
+                downSuccessor.Cost = 1;
+                successorsList.Add(downSuccessor);
+            }
+            return successorsList;
         }
 
         public State<Position> getGoalState()
@@ -42,45 +80,45 @@ namespace ServerProject
         }
 
         //Method to initialize all the successors of each state.
-        private void initializeSuccessors()
-        {
-            for(int row = 0;row < maze.Rows; ++row)
-            {
-                for(int col = 0;col < maze.Cols; ++col)
-                {
-                    List<State<Position>> successorsList = new List<State<Position>>();
-                    State<Position> currentState = new State<Position>(new Position(row, col));
-                    //Left succesor
-                    if (isAccessable(row, col - 1)) {
-                        State<Position> leftSuccessor = new State<Position>(new Position(row, col - 1));
-                        leftSuccessor.Cost = 1;
-                        successorsList.Add(leftSuccessor);
-                    }
-                    //Right succesor
-                    if (isAccessable(row, col + 1))
-                    {
-                        State<Position> rightSuccessor = new State<Position>(new Position(row, col + 1));
-                        rightSuccessor.Cost = 1;
-                        successorsList.Add(rightSuccessor);
-                    }
-                    //Up succesor
-                    if (isAccessable(row + 1, col))
-                    {
-                        State<Position> upSuccessor = new State<Position>(new Position(row + 1, col));
-                        upSuccessor.Cost = 1;
-                        successorsList.Add(upSuccessor);
-                    }
-                    //Down succesor
-                    if (isAccessable(row - 1, col))
-                    {
-                        State<Position> downSuccessor = new State<Position>(new Position(row - 1, col));
-                        downSuccessor.Cost = 1;
-                        successorsList.Add(downSuccessor);
-                    }
-                    adjacencyList.Add(currentState, successorsList);
-                }
-            }
-        }
+        //private void initializeSuccessors()
+        //{
+        //    for(int row = 0;row < maze.Rows; ++row)
+        //    {
+        //        for(int col = 0;col < maze.Cols; ++col)
+        //        {
+        //            List<State<Position>> successorsList = new List<State<Position>>();
+        //            State<Position> currentState = new State<Position>(new Position(row, col));
+        //            //Left succesor
+        //            if (isAccessable(row, col - 1)) {
+        //                State<Position> leftSuccessor = new State<Position>(new Position(row, col - 1));
+        //                leftSuccessor.Cost = 1;
+        //                successorsList.Add(leftSuccessor);
+        //            }
+        //            //Right succesor
+        //            if (isAccessable(row, col + 1))
+        //            {
+        //                State<Position> rightSuccessor = new State<Position>(new Position(row, col + 1));
+        //                rightSuccessor.Cost = 1;
+        //                successorsList.Add(rightSuccessor);
+        //            }
+        //            //Up succesor
+        //            if (isAccessable(row + 1, col))
+        //            {
+        //                State<Position> upSuccessor = new State<Position>(new Position(row + 1, col));
+        //                upSuccessor.Cost = 1;
+        //                successorsList.Add(upSuccessor);
+        //            }
+        //            //Down succesor
+        //            if (isAccessable(row - 1, col))
+        //            {
+        //                State<Position> downSuccessor = new State<Position>(new Position(row - 1, col));
+        //                downSuccessor.Cost = 1;
+        //                successorsList.Add(downSuccessor);
+        //            }
+        //            adjacencyList.Add(currentState, successorsList);
+        //        }
+        //    }
+        //}
 
         private bool isAccessable(int row,int col)
         {

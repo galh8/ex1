@@ -14,10 +14,11 @@ namespace ServerProject
 {
     public class Model : IModel
     {
-        private Dictionary<string, string> mazeSolutions;
+        private Dictionary<string, string> mazeBFSSolutions;
+        private Dictionary<string, string> mazeDFSSolutions;
         private Dictionary<string, Maze> mazesDictionary;
         private Dictionary<string, Game> gamesLobby;
-        private Dictionary<TcpClient,Game> gamesBeingPlayed;
+        private Dictionary<TcpClient, Game> gamesBeingPlayed;
         DFSMazeGenerator mazeGenerator;
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
@@ -26,10 +27,11 @@ namespace ServerProject
         public Model()
         {
             mazeGenerator = new DFSMazeGenerator();
-            mazeSolutions = new Dictionary<string, string>();
+            mazeBFSSolutions = new Dictionary<string, string>();
+            mazeDFSSolutions = new Dictionary<string, string>();
             mazesDictionary = new Dictionary<string, Maze>();
             gamesLobby = new Dictionary<string, Game>();
-            gamesBeingPlayed = new Dictionary<TcpClient, Game>(); 
+            gamesBeingPlayed = new Dictionary<TcpClient, Game>();
             bfsSolver = new BFS<Position>();
             dfsSolver = new DFS<Position>();
         }
@@ -46,11 +48,11 @@ namespace ServerProject
         {
             Maze maze = mazeGenerator.Generate(rows, cols);
             maze.Name = name;
-            var newGame = new Game(firstPlayer,maze); //publisher
+            var newGame = new Game(firstPlayer, maze); //publisher
 
             //adding the new maze to the maze dictionary.
             mazesDictionary.Add(name, maze);
-            
+
             //adding the game to the lobby till someone asks to join
             gamesLobby.Add(name, newGame);
 
@@ -81,13 +83,13 @@ namespace ServerProject
         public string play(string direction, TcpClient otherPlayer)
         {
             Game currentGAME = gamesBeingPlayed[otherPlayer];
-            TcpClient playerToNotify =  currentGAME.getOtherPlayer(otherPlayer);
-            
+            TcpClient playerToNotify = currentGAME.getOtherPlayer(otherPlayer);
+
 
             /*pop out the game out of the lobby and moves it 
             to another dictonery of a being played games */
             //gamesLobby.Remove(direction);
-           // gamesBeingPlayed.Add(direction, currentGAME);
+            // gamesBeingPlayed.Add(direction, currentGAME);
 
             //notify that another player joined the game.
             //currentGAME.joinAnotherPlayer(otherPlayer);
@@ -107,56 +109,69 @@ namespace ServerProject
             return currentGAME.Name;
 
         }
-    
 
 
 
 
-    public string getListOfGames()
+
+        public string getListOfGames()
         {
             List<string> gamesList = new List<string>(this.gamesLobby.Keys);
 
             return JsonConvert.SerializeObject(gamesList);
-         }
+        }
 
 
         public string solve(string name, int algo)
         {
-            //checks if the solution is already exists.
-            if (mazeSolutions.ContainsKey(name))
+            if (algo == 0)
             {
-                return mazeSolutions[name];
+                //checks if the  BFS solution is already exists.
+                if (mazeBFSSolutions.ContainsKey(name))
+                {
+                    return mazeBFSSolutions[name];
+                }
+
             }
+            else if (mazeDFSSolutions.ContainsKey(name))
+            //checks if the DFS solution is already exists.
+
+            {
+                return mazeDFSSolutions[name];
+            }
+
+
             //if there is no existing solution - solving it. 
+            Maze maze = mazesDictionary[name];
+            SearchableMaze searchableMaze = new SearchableMaze(maze);
+            JObject solveObj = new JObject();
+            solveObj["Name"] = name;
+
+            if (algo == 0)
+            {
+                Solution<Position> bfsSolution = new Solution<Position>();
+                bfsSolution = bfsSolver.search(searchableMaze);
+                //Json
+                solveObj["Solution"] = calculateSolution(bfsSolution.PathToGoal());
+                solveObj["NodesEvaluated"] = bfsSolver.getNumberOfNodesEvaluated().ToString();
+                mazeBFSSolutions.Add(name, solveObj.ToString());
+            }
             else
             {
-                Maze maze = mazesDictionary[name];
-                SearchableMaze searchableMaze = new SearchableMaze(maze);
-                JObject solveObj = new JObject();
-                solveObj["Name"] = name;
-
-                if (algo == 0)
-                {
-                    Solution<Position> bfsSolution = new Solution<Position>();
-                    bfsSolution = bfsSolver.search(searchableMaze);
-                    //Json
-                    solveObj["Solution"] = calculateSolution(bfsSolution.PathToGoal());
-                    solveObj["NodesEvaluated"] = bfsSolver.getNumberOfNodesEvaluated().ToString();
-                }
-                else
-                {
-                    Solution<Position> dfsSolution = new Solution<Position>();
-                    dfsSolution = dfsSolver.search(searchableMaze);
-                    //Json                   
-                    solveObj["Solution"] = calculateSolution(dfsSolution.PathToGoal());
-                    solveObj["NodesEvaluated"] = dfsSolver.getNumberOfNodesEvaluated().ToString();
-                }
-                //adding the solution to the dictionary.
-                mazeSolutions.Add(name, solveObj.ToString());
-                return solveObj.ToString();
+                Solution<Position> dfsSolution = new Solution<Position>();
+                dfsSolution = dfsSolver.search(searchableMaze);
+                //Json                   
+                solveObj["Solution"] = calculateSolution(dfsSolution.PathToGoal());
+                solveObj["NodesEvaluated"] = dfsSolver.getNumberOfNodesEvaluated().ToString();
+                mazeDFSSolutions.Add(name, solveObj.ToString());
             }
-
+            //adding the solution to the dictionary.
+           
+            return solveObj.ToString();
         }
+
+    
+
 
         private string calculateSolution(List<State<Position>> pathToGoal)
         {
