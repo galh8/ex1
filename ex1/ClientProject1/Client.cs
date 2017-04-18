@@ -94,6 +94,7 @@ namespace ClientProject
                         }
                         Console.WriteLine("{0}", feedback);
                     }
+                    reader.ReadLine();
 
 
                     //************TODO - ADD a condition of receiving empty jason obj to stop loop*****
