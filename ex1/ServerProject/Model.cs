@@ -29,7 +29,7 @@ namespace ServerProject
             mazeSolutions = new Dictionary<string, string>();
             mazesDictionary = new Dictionary<string, Maze>();
             gamesLobby = new Dictionary<string, Game>();
-            gamesBeingPlayed = new Dictionary<string, Game>(); 
+            gamesBeingPlayed = new Dictionary<TcpClient, Game>(); 
             bfsSolver = new BFS<Position>();
             dfsSolver = new DFS<Position>();
         }
@@ -98,7 +98,7 @@ namespace ServerProject
             List<string> gamesList = new List<string>(this.gamesLobby.Keys);
 
             return JsonConvert.SerializeObject(gamesList);
-        }
+         }
 
 
         public string solve(string name, int algo)
@@ -161,7 +161,7 @@ namespace ServerProject
                     }
                 }
                 //if we came from the same col
-                else if(position.getInstance().Row != position.CameFrom.getInstance().Row)
+                else if (position.getInstance().Row != position.CameFrom.getInstance().Row)
                 {
                     if (position.getInstance().Row > position.CameFrom.getInstance().Row)
                     {
