@@ -14,5 +14,7 @@ namespace ServerProject
         void setView(IClientHandler v);
        // void setSolution(Solution<T> s);
         string executeCommand(String problem, TcpClient client);
+
+        void buildController(Model model, IClientHandler view);
     }
 }

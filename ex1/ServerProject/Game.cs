@@ -10,7 +10,7 @@ using System.Net;
 
 namespace ServerProject
 {
-    class Game
+    public class Game
     {
         //1. define a delegate - the signature of the method.
         //2. define an event based on that delegate.
@@ -71,6 +71,12 @@ namespace ServerProject
         {
             return canStart;
         }
+
+        public TcpClient getCreatorPlayer()
+        {
+            return gameCreatorPlayer;
+        }
+        
 
     }
 }

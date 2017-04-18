@@ -18,15 +18,20 @@ namespace ServerProject
 
         public Controller()
         {
-            model = new Model();
+
+        }
+
+        public void buildController(Model model, IClientHandler view)
+        {
+            this.model = model;
+            this.view = view;
             commands = new Dictionary<string, ICommand>();
             commands.Add("generate", new GenerateMazeCommand(model));
             commands.Add("solve", new SolveMazeCommand(model));
             commands.Add("join", new JoinCommand(model));
             commands.Add("start", new StartGameCommand(model));
             commands.Add("list", new listCommand(model));
-            commands.Add("play", new PlayCommand(view ,model));
-
+            commands.Add("play", new PlayCommand(view, model));
         }
 
 
@@ -55,6 +60,7 @@ namespace ServerProject
         public void setView(IClientHandler v)
         {
             this.view = v;
+            
         }
     }
 }

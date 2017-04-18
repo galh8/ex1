@@ -12,7 +12,7 @@ using System.Net.Sockets;
 
 namespace ServerProject
 {
-    class Model : IModel
+    public class Model : IModel
     {
         private Dictionary<string, string> mazeSolutions;
         private Dictionary<string, Maze> mazesDictionary;
@@ -70,7 +70,7 @@ namespace ServerProject
             to another dictonery of a being played games */
             gamesLobby.Remove(gameName);
             gamesBeingPlayed.Add(otherPlayer, currentGAME);
-            gamesBeingPlayed.Add(currentGAME.getOtherPlayer, currentGAME);
+            gamesBeingPlayed.Add(currentGAME.getCreatorPlayer(), currentGAME);
 
             //notify that another player joined the game.
             currentGAME.joinAnotherPlayer(otherPlayer);
@@ -117,7 +117,7 @@ namespace ServerProject
             List<string> gamesList = new List<string>(this.gamesLobby.Keys);
 
             return JsonConvert.SerializeObject(gamesList);
-        }
+         }
 
 
         public string solve(string name, int algo)
@@ -180,7 +180,7 @@ namespace ServerProject
                     }
                 }
                 //if we came from the same col
-                else if(position.getInstance().Row != position.CameFrom.getInstance().Row)
+                else if (position.getInstance().Row != position.CameFrom.getInstance().Row)
                 {
                     if (position.getInstance().Row > position.CameFrom.getInstance().Row)
                     {

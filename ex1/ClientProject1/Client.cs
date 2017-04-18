@@ -28,7 +28,7 @@ namespace ClientProject
             TcpClient client = new TcpClient();
             client.Connect(ep);
             Console.WriteLine("Client connected");
-            bool isMultiplayer = false; 
+            bool isMultiplayer = false;
 
             //using (NetworkStream stream = client.GetStream())
             //using (StreamReader reader = new StreamReader(stream))
@@ -80,9 +80,9 @@ namespace ClientProject
                     // Sending a command to server
                     Console.Write("Please enter a command: ");
                     string command = Console.ReadLine();
-                    if (command.Contains("play")||command.Contains("join"))
+                    if (command.Contains("start") || command.Contains("join"))
                     {
-                        isMultiplayer = true; 
+                        isMultiplayer = true;
                     }
                     writer.WriteLine(command);
                     writer.Flush();
@@ -105,7 +105,7 @@ namespace ClientProject
                     {
                         Task multiplayerReader = new Task(() =>
                         {
-                            while(true)
+                            while (true)
                             {
                                 string feedback = reader.ReadLine();
                                 if (reader.Peek() == '@')
@@ -118,51 +118,75 @@ namespace ClientProject
                             reader.ReadLine();
                         });
 
-                        multiplayerReader.Start();
-
-                        while (true)
+                        
+                        Task multiplayerWriter = new Task(() =>
                         {
-                            Console.Write("Please enter a multiplayer command: ");
-                            string multiplayerCommand = Console.ReadLine();
-                            if (command.Contains("close"))
+                            while (true)
                             {
-                                multiplayerReader.Dispose();
-                                break;
+                                Console.Write("Please enter a multiplayer command: ");
+                                string multiplayerCommand = Console.ReadLine();
+                                if (command.Contains("close"))
+                                {
+                                    multiplayerReader.Dispose();
+                                    break;
+                                }
+                                writer.WriteLine(multiplayerCommand);
+                                writer.Flush();
+                                Console.WriteLine("{0}", multiplayerCommand);
                             }
-                            writer.WriteLine(command);
-                            writer.Flush();
-                            Console.WriteLine("{0}", command);
-                        }
-                    }
+
+                        });
+
+                        multiplayerReader.Start();
+                        multiplayerWriter.Start();
+
+                        multiplayerReader.Wait();
+                        multiplayerWriter.Wait();
+
+                     } // end of if multiplayer
+
+                        //while (true)
+                        //{
+                        //    Console.Write("Please enter a multiplayer command: ");
+                        //    string multiplayerCommand = Console.ReadLine();
+                        //    if (command.Contains("close"))
+                        //    {
+                        //        multiplayerReader.Dispose();
+                        //        break;
+                        //    }
+                        //    writer.WriteLine(multiplayerCommand);
+                        //    writer.Flush();
+                        //    Console.WriteLine("{0}", multiplayerCommand);
+                        //}
+
+                        //************TODO - ADD a condition of receiving empty jason obj to stop loop*****
+                    } // end of while (true)
 
 
-                    //************TODO - ADD a condition of receiving empty jason obj to stop loop*****
-                }
+                    //get result from server
+                    //string result = FromJSON(reader.read());
+                    // Get result from server
+                    //int result = reader.ReadInt32();
+                    //Console.WriteLine("Result = {0}", result);
+                } // end of using
+                //    Thread receiver = new Thread(delegate ()
+                //    {
+
+                //        {
+                //            while (true)
+                //            {
+                //                //Console.WriteLine("Starting client");
+                //                string result = reader.ReadLine();
+                //                Console.WriteLine(result);
+                //            }
+                //        }
+                //    });
+
+                client.Close();
+            } // end of the class
 
 
-                //get result from server
-                //string result = FromJSON(reader.read());
-                // Get result from server
-                //int result = reader.ReadInt32();
-                //Console.WriteLine("Result = {0}", result);
-            }
-            //    Thread receiver = new Thread(delegate ()
-            //    {
-
-            //        {
-            //            while (true)
-            //            {
-            //                //Console.WriteLine("Starting client");
-            //                string result = reader.ReadLine();
-            //                Console.WriteLine(result);
-            //            }
-            //        }
-            //    });
-
-            client.Close();
         }
-        
-
     }
-}
+
 
