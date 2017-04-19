@@ -19,7 +19,7 @@ namespace ServerProject.commands
         }
 
 
-        public string Execute(string[] args, TcpClient client = null)
+        public string Execute(string[] args, TcpClient client )
         {
             TcpClient clientToNotify = model.getOtherPlayerClient(client);
             clientHendler.notifyClient("close_connection", clientToNotify);

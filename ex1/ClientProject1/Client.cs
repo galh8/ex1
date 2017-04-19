@@ -73,8 +73,9 @@ namespace ClientProject
                                 while (!close)
                                 {
                                     string feedback = reader.ReadLine();
-                                    if (feedback.Equals("close_connection"))
+                                    if (feedback.Contains("close_connection"))
                                     {
+                                        Console.WriteLine("Other client notified");
                                         close = true;
                                         break;
                                     }
@@ -86,8 +87,10 @@ namespace ClientProject
                                     Console.WriteLine("{0}", feedback);
 
                                 }
+                                
                                 reader.ReadLine();
                             }
+                            Console.WriteLine("Other while loop ended");
                             
                         });
 
@@ -99,16 +102,25 @@ namespace ClientProject
                             while (!close)
                             {
                                 Console.Write("Please enter a multiplayer command: ");
-                                string multiplayerCommand = Console.ReadLine();
-                                writer.WriteLine(multiplayerCommand);
-                                writer.Flush();
-                                if (command.Contains("close"))
+                                try
                                 {
-                                    close = true;
+                                    string multiplayerCommand = Console.ReadLine();
+                                    writer.WriteLine(multiplayerCommand);
+                                    writer.Flush();
+                                    if (multiplayerCommand.Contains("close"))
+                                    {
+                                        Console.WriteLine("Client stops the thread");
+                                        close = true;
+                                        break;
+                                    }
+                                }catch (SocketException s)
+                                {
                                     break;
                                 }
+                                
                                // Console.WriteLine("{0}", multiplayerCommand);
                             }
+                            Console.WriteLine("MYself while stopped");
 
                         });
 
@@ -116,8 +128,12 @@ namespace ClientProject
                         multiplayerWriter.Start();
 
                         multiplayerReader.Wait();
-                        multiplayerWriter.Wait();
                         
+                        //multiplayerWriter.di
+                        //multiplayerWriter.Wait();
+
+                        //multiplayerWriter;
+                        Console.WriteLine("After Writer wait");
 
                     }
                     
