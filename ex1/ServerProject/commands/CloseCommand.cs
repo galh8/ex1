@@ -23,6 +23,7 @@ namespace ServerProject.commands
         {
             TcpClient clientToNotify = model.getOtherPlayerClient(client);
             clientHendler.notifyClient("close_connection", clientToNotify);
+            Console.WriteLine("Closing client connection");
             return "close_connection";
         }
     }

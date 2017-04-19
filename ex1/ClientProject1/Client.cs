@@ -30,46 +30,6 @@ namespace ClientProject
             Console.WriteLine("Client connected");
             bool isMultiplayer = false;
 
-            //using (NetworkStream stream = client.GetStream())
-            //using (StreamReader reader = new StreamReader(stream))
-            //using (StreamWriter writer = new StreamWriter(stream))
-            //{
-
-            //Thread sender = new Thread(delegate ()
-            //{
-
-            //    {
-            //        Console.WriteLine("type a command");
-            //        string command = Console.ReadLine();
-            //        writer.WriteLine(command);
-            //        writer.Flush();
-            //    }
-            //});
-
-
-            //    Thread receiver = new Thread(delegate ()
-            //    {
-
-            //        {
-            //            while (true)
-            //            {
-            //                //Console.WriteLine("Starting client");
-            //                string result = reader.ReadLine();
-            //                Console.WriteLine(result);
-            //            }
-            //        }
-            //    });
-
-            //    do
-            //    {
-            //        sender.Start();
-            //        sender.Join();
-            //        receiver.Start();
-            //        receiver.Join();
-            //    } while (true);
-            //}
-
-
 
             using (NetworkStream stream = client.GetStream())
             using (StreamReader reader = new StreamReader(stream))
@@ -103,19 +63,28 @@ namespace ClientProject
 
                     if (isMultiplayer)
                     {
+                        bool close = false;
                         Task multiplayerReader = new Task(() =>
                         {
-                            while (true)
+                            
+                            while (!close)
                             {
-                                while (true)
+                                
+                                while (!close)
                                 {
                                     string feedback = reader.ReadLine();
+                                    if (feedback.Equals("close_connection"))
+                                    {
+                                        close = true;
+                                        break;
+                                    }
                                     if (reader.Peek() == '@')
                                     {
                                         feedback.TrimEnd('\n');
                                         break;
                                     }
                                     Console.WriteLine("{0}", feedback);
+
                                 }
                                 reader.ReadLine();
                             }
@@ -127,18 +96,18 @@ namespace ClientProject
                         
                         Task multiplayerWriter = new Task(() =>
                         {
-                            while (true)
+                            while (!close)
                             {
                                 Console.Write("Please enter a multiplayer command: ");
                                 string multiplayerCommand = Console.ReadLine();
-                                if (command.Contains("close"))
-                                {
-                                    multiplayerReader.Dispose();
-                                    break;
-                                }
                                 writer.WriteLine(multiplayerCommand);
                                 writer.Flush();
-                                Console.WriteLine("{0}", multiplayerCommand);
+                                if (command.Contains("close"))
+                                {
+                                    close = true;
+                                    break;
+                                }
+                               // Console.WriteLine("{0}", multiplayerCommand);
                             }
 
                         });
@@ -148,47 +117,15 @@ namespace ClientProject
 
                         multiplayerReader.Wait();
                         multiplayerWriter.Wait();
+                        
 
-                     } // end of if multiplayer
-
-                        //while (true)
-                        //{
-                        //    Console.Write("Please enter a multiplayer command: ");
-                        //    string multiplayerCommand = Console.ReadLine();
-                        //    if (command.Contains("close"))
-                        //    {
-                        //        multiplayerReader.Dispose();
-                        //        break;
-                        //    }
-                        //    writer.WriteLine(multiplayerCommand);
-                        //    writer.Flush();
-                        //    Console.WriteLine("{0}", multiplayerCommand);
-                        //}
-
-                        //************TODO - ADD a condition of receiving empty jason obj to stop loop*****
-                    } // end of while (true)
-
-
-                    //get result from server
-                    //string result = FromJSON(reader.read());
-                    // Get result from server
-                    //int result = reader.ReadInt32();
-                    //Console.WriteLine("Result = {0}", result);
-                } // end of using
-                //    Thread receiver = new Thread(delegate ()
-                //    {
-
-                //        {
-                //            while (true)
-                //            {
-                //                //Console.WriteLine("Starting client");
-                //                string result = reader.ReadLine();
-                //                Console.WriteLine(result);
-                //            }
-                //        }
-                //    });
-
+                    }
+                    
+                }
                 client.Close();
+             } 
+
+                //client.Close();
             } // end of the class
 
 

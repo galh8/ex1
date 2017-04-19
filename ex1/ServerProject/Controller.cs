@@ -32,6 +32,7 @@ namespace ServerProject
             commands.Add("start", new StartGameCommand(model));
             commands.Add("list", new listCommand(model));
             commands.Add("play", new PlayCommand(view, model));
+            commands.Add("close", new CloseCommand(view, model));
         }
 
 
