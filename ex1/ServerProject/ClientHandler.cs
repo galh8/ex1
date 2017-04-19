@@ -24,16 +24,17 @@ namespace ServerProject
         public void HandleClient(TcpClient client)
         {
                 Task handleClient =  new Task(() =>
-                { 
+                {
+                string result = "dummy_start";
                 using (NetworkStream stream = client.GetStream())
                 using (StreamReader reader = new StreamReader(stream))
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                        while (true)
+                        while (!result.Equals("close_connection"))
                         {
                             string commandLine = reader.ReadLine();
                             //Console.WriteLine(commandLine);
-                            string result = controller.executeCommand(commandLine, client);
+                            result = controller.executeCommand(commandLine, client);
                             //Console.WriteLine("the result we wanna send: {0}", result);
                             result += '\n';
                             result += '@';

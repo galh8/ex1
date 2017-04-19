@@ -28,7 +28,7 @@ namespace ServerProject.commands
             Maze maze = model.GenerateMaze(name, rows, cols);
             maze.Name = name;
             Console.WriteLine("maze created");
-            return maze.ToJSON();
+            return maze.ToJSON()+ '\n' ;
             
         }
     }

@@ -24,7 +24,7 @@ namespace ServerProject.commands
 
             string joinedCompleted = model.join(args[0],client);
 
-            return joinedCompleted;
+            return joinedCompleted + '\n';
         }
     }
 }

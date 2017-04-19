@@ -8,6 +8,7 @@ using MazeGeneratorLib;
 using MazeLib;
 using Newtonsoft.Json;
 using SearchAlgorithmsLib;
+using Newtonsoft.Json.Linq;
 
 namespace ServerProject.commands
 {
@@ -22,9 +23,9 @@ namespace ServerProject.commands
         public string Execute(string[] args, TcpClient client)
         {
 
-            string listOfGames = model.getListOfGames();
-
-            return listOfGames;
+            string[] listOfGames = model.getListOfGames();
+            Console.WriteLine(JsonConvert.SerializeObject(listOfGames));
+            return JsonConvert.SerializeObject(listOfGames)+'\n';
         }
     }
 }

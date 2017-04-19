@@ -26,7 +26,7 @@ namespace ServerProject.commands
 
             string solution = model.solve(mazeName,algo);
 
-            return solution;
+            return solution + '\n';
         }
     }
 }

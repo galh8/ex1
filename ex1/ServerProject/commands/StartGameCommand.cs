@@ -30,7 +30,7 @@ namespace ServerProject.commands
 
             while (!currentGame.CanStart()) { }
 
-            return currentGame.PlayedMaze().ToJSON();
+            return currentGame.PlayedMaze().ToJSON() + '\n';
         }
 
         //public void OngameNeedsToStart(object Sorce, EventArgs e)
