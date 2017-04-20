@@ -33,11 +33,11 @@ namespace ServerProject.commands
             solveObj["Direction"] = direction;
             //Console.WriteLine(solveObj.ToString());
             //Console.ReadLine();
-            clientHendler.notifyClient(solveObj.ToString(), clientToNotify);
+            clientHendler.notifyClient(solveObj.ToString()+'\n', clientToNotify);
             Console.WriteLine("After notify");
             //makes the move and returns the direction the other player moved.
             //string otherPlayerDirection = model.play(direction, client);
-            return "Other Player notified!";
+            return "Other Player notified!" + '\n';
         }
     }
 }
