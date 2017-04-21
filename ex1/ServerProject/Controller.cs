@@ -15,10 +15,11 @@ namespace ServerProject
         private Dictionary<string, ICommand> commands;
         private Model model;
         private IClientHandler view;
+        private bool isMultiplayer;
 
         public Controller()
         {
-
+            isMultiplayer = false;
         }
 
         public void buildController(Model model, IClientHandler view)
@@ -42,6 +43,24 @@ namespace ServerProject
             string commandKey = arr[0];
             if (!commands.ContainsKey(commandKey))
                 return "Command not found";
+
+            
+            if (commandKey.Contains("start")  || commandKey.Contains("join")) {
+                isMultiplayer = true;
+            }
+        
+            //checking and modifying the player play status
+            if ((commandKey.Contains("close")) || commandKey.Contains("play"))
+            {
+                if (!isMultiplayer)
+                {
+                    return "Not a multiplayer game";
+                }
+                else
+                {
+                    isMultiplayer = false;
+                }
+            }
             string[] args = arr.Skip(1).ToArray();
             ICommand command = commands[commandKey];
             return command.Execute(args, client);

@@ -19,9 +19,11 @@ namespace ServerProject
         private Dictionary<string, Maze> mazesDictionary;
         private Dictionary<string, Game> gamesLobby;
         private Dictionary<TcpClient, Game> gamesBeingPlayed;
+        private HashSet<string> mazesAndGamesNames;
         DFSMazeGenerator mazeGenerator;
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
+
 
 
         public Model()
@@ -34,20 +36,25 @@ namespace ServerProject
             gamesBeingPlayed = new Dictionary<TcpClient, Game>();
             bfsSolver = new BFS<Position>();
             dfsSolver = new DFS<Position>();
+            //hash set that resposible to aware of two games and mazes with the same name.
+            mazesAndGamesNames = new HashSet<string>();
         }
+
 
         public Maze GenerateMaze(string name, int rows, int cols)
         {
-
             Maze maze = mazeGenerator.Generate(rows, cols);
             mazesDictionary.Add(name, maze);
+            mazesAndGamesNames.Add(name);
             return maze;
         }
+        
 
         public Game startGame(string name, int rows, int cols, System.Net.Sockets.TcpClient firstPlayer)
         {
             Maze maze = mazeGenerator.Generate(rows, cols);
             maze.Name = name;
+            mazesAndGamesNames.Add(name);
             var newGame = new Game(firstPlayer, maze); //publisher
 
             //adding the new maze to the maze dictionary.
@@ -96,6 +103,19 @@ namespace ServerProject
 
             return currentGAME.PlayedMaze().ToJSON();
         }
+
+        public void close(TcpClient firstPlayer, TcpClient secondPlayer)
+        {
+            Game currentGame = gamesBeingPlayed[firstPlayer];
+            //removing the maze of the game from the maze dictionery.
+            mazesDictionary.Remove(currentGame.Name);
+            mazesAndGamesNames.Remove(currentGame.Name);
+            //removing both of the players from the list.
+            gamesBeingPlayed.Remove(firstPlayer);
+            gamesBeingPlayed.Remove(secondPlayer);
+            
+        }
+
         public TcpClient getOtherPlayerClient(TcpClient client)
         {
             Game currentGAME = gamesBeingPlayed[client];
@@ -137,7 +157,6 @@ namespace ServerProject
             }
             else if (mazeDFSSolutions.ContainsKey(name))
             //checks if the DFS solution is already exists.
-
             {
                 return mazeDFSSolutions[name];
             }
@@ -172,7 +191,15 @@ namespace ServerProject
             return solveObj.ToString();
         }
 
-    
+        public bool isNameAlreadyExists(string name)
+        {
+            if (mazesAndGamesNames.Contains(name))
+            {
+                return true;
+            }
+
+            return false;
+        }
 
 
         private string calculateSolution(List<State<Position>> pathToGoal)

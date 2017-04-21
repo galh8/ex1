@@ -22,7 +22,10 @@ namespace ServerProject.commands
         public string Execute(string[] args, TcpClient client )
         {
             TcpClient clientToNotify = model.getOtherPlayerClient(client);
-            clientHendler.notifyClient("close_connection", clientToNotify);
+            //removing the game from the games being played
+            model.close(client, clientToNotify);
+            clientHendler.notifyClient("close connection", clientToNotify);
+            Console.WriteLine("other player notified to close connection");
             Console.WriteLine("Closing client connection");
 
             return "close connection" ;

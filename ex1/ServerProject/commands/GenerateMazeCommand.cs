@@ -25,6 +25,11 @@ namespace ServerProject.commands
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
 
+            if (model.isNameAlreadyExists(name))
+            {
+                return "name already exists. try another name";
+            }
+
             Maze maze = model.GenerateMaze(name, rows, cols);
             maze.Name = name;
             Console.WriteLine("maze created");

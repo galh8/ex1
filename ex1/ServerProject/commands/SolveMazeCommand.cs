@@ -24,6 +24,12 @@ namespace ServerProject.commands
             string mazeName = args[0];
             int algo = int.Parse(args[1]);
 
+            //checks if maze actually exists.
+            if (!model.isNameAlreadyExists(mazeName))
+            {
+                return "maze does not exists";
+            }
+
             string solution = model.solve(mazeName,algo);
 
             return solution + '\n';
