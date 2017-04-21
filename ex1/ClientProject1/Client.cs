@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
-using Newtonsoft.Json;
-using System.Threading;
-using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using MazeLib;
-
+using System.Configuration;
 
 namespace Client
 {
@@ -32,11 +31,10 @@ namespace Client
         /// <summary>
         /// Starts this instance.
         /// </summary>
-        
-        
+        static void Main(string[] args)
+        {
             //int Port =  int.Parse(Console.ReadLine());
-            static void Main(string[] args)
-            { 
+
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 49251);
             TcpClient client = new TcpClient();
             client.Connect(ep);
@@ -196,6 +194,7 @@ namespace Client
         } // end of the class
     }
 }
+
 
 //namespace ClientProject
 //{
