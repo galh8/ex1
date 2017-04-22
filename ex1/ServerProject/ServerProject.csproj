@@ -52,14 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientHandler.cs" />
+    <Compile Include="View.cs" />
     <Compile Include="commands\CloseCommand.cs" />
     <Compile Include="commands\JoinCommand.cs" />
     <Compile Include="commands\PlayCommand.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="commands\GenerateMazeCommand.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="IClientHandler.cs" />
+    <Compile Include="IView.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IModel.cs" />

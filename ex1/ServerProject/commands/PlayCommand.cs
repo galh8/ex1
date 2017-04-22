@@ -16,9 +16,9 @@ namespace ServerProject.commands
     class PlayCommand : ICommand
     {
         private Model model;
-        private IClientHandler clientHendler;
+        private IView clientHendler;
 
-        public PlayCommand(IClientHandler clientHendler, Model model)
+        public PlayCommand(IView clientHendler, Model model)
         {
             this.model = model;
             this.clientHendler = clientHendler;

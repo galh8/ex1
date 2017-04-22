@@ -10,11 +10,11 @@ using Newtonsoft.Json;
 
 namespace ServerProject
 {
-    class ClientHandler : IClientHandler
+    class View : IView
     {
         private IController controller;
         
-        public ClientHandler(IController controller)
+        public View(IController controller)
         {
             this.controller = controller;
             //TODO Check if necessary?

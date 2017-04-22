@@ -11,10 +11,10 @@ namespace ServerProject
     public interface IController
     {
         void setModel(IModel m);
-        void setView(IClientHandler v);
+        void setView(IView v);
 
         string executeCommand(String problem, TcpClient client);
 
-        void buildController(Model model, IClientHandler view);
+        void buildController(Model model, IView view);
     }
 }

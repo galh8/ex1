@@ -12,7 +12,7 @@ namespace ServerProject
         {
             IController controller = new Controller();
             Model model = new Model();
-            IClientHandler view = new ClientHandler(controller);
+            IView view = new View(controller);
             controller.buildController(model, view);
             Server server = new Server(49251, view);
             server.start();

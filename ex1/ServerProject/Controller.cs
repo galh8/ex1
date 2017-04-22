@@ -14,7 +14,7 @@ namespace ServerProject
     {
         private Dictionary<string, ICommand> commands;
         private Model model;
-        private IClientHandler view;
+        private IView view;
         private bool isMultiplayer;
 
         public Controller()
@@ -27,7 +27,7 @@ namespace ServerProject
         /// </summary>
         /// <param name="model">The model.</param>
         /// <param name="view">The view.</param>
-        public void buildController(Model model, IClientHandler view)
+        public void buildController(Model model, IView view)
         {
             this.model = model;
             this.view = view;
@@ -86,7 +86,7 @@ namespace ServerProject
             throw new NotImplementedException();
         }
 
-        public void setView(IClientHandler v)
+        public void setView(IView v)
         {
             this.view = v;
             

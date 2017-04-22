@@ -13,10 +13,10 @@ namespace ServerProject
     {
         private int port;
         private TcpListener listener;
-        private IClientHandler ch;
+        private IView ch;
         private List<TcpClient> clientsList;
 
-        public Server(int port, IClientHandler ch)
+        public Server(int port, IView ch)
         {
             this.port = port;
             this.ch = ch;

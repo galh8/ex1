@@ -7,7 +7,7 @@ using System.Net.Sockets;
 
 namespace ServerProject
 {
-    public interface IClientHandler
+    public interface IView
     {
         void HandleClient(TcpClient client);
         void notifyClient(string message, TcpClient client);

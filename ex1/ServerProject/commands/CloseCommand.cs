@@ -10,9 +10,9 @@ namespace ServerProject.commands
     class CloseCommand : ICommand
     {
         private Model model;
-        private IClientHandler clientHendler;
+        private IView clientHendler;
 
-        public CloseCommand(IClientHandler clientHendler, Model model)
+        public CloseCommand(IView clientHendler, Model model)
         {
             this.model = model;
             this.clientHendler = clientHendler;
