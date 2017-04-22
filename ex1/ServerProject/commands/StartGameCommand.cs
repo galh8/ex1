@@ -29,11 +29,11 @@ namespace ServerProject.commands
         public string Execute(string[] args, TcpClient client)
         {
             string gameName = args[0];
-            
-            //if (model.isNameAlreadyExists(gameName))
-            //{
-            //    return "name already exists. try another name"+ '\n';
-            //}
+
+            if (model.isNameAlreadyExists(gameName))
+            {
+                return "name already exists. try another name" + '\n';
+            }
 
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
