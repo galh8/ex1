@@ -19,6 +19,12 @@ namespace ServerProject.commands
             this.model = model;
         }
 
+        /// <summary>
+        /// Executes the specified command - solve by a specific algo.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        /// <param name="client">The client.</param>
+        /// <returns>string of the outcome</returns>
         public string Execute(string[] args, TcpClient client)
         {
             string mazeName = args[0];

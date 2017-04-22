@@ -24,6 +24,12 @@ namespace ServerProject.commands
             this.clientHendler = clientHendler;
         }
 
+        /// <summary>
+        /// Executes the specified command - play. notifies the other play what to move.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        /// <param name="client">The client.</param>
+        /// <returns>string of the outcome</returns>
         public string Execute(string[] args, TcpClient client)
         {
             string direction = args[0];

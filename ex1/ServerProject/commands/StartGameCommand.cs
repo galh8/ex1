@@ -20,6 +20,12 @@ namespace ServerProject.commands
             this.model = model;
         }
 
+        /// <summary>
+        /// Executes the specified command - start game.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        /// <param name="client">The client.</param>
+        /// <returns>string of the outcome</returns>
         public string Execute(string[] args, TcpClient client)
         {
             string gameName = args[0];
@@ -34,6 +40,7 @@ namespace ServerProject.commands
 
             Game currentGame = model.startGame(gameName, rows, cols,client);
 
+            //waiting for an other player to join the game.
             while (!currentGame.CanStart()) { }
 
             return currentGame.PlayedMaze().ToJSON() + '\n';

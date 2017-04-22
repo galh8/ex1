@@ -18,7 +18,13 @@ namespace ServerProject.commands
             this.clientHendler = clientHendler;
         }
 
-
+        /// <summary>
+        /// Executes the specified command - close game.closes the game 
+        /// and notifies the other player.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        /// <param name="client">The client.</param>
+        /// <returns>string of the outcome</returns>
         public string Execute(string[] args, TcpClient client )
         {
             TcpClient clientToNotify = model.getOtherPlayerClient(client);
