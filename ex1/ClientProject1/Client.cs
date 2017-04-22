@@ -71,7 +71,7 @@ namespace Client
                         //if the name of the game already exists, or the game we want to join
                         //does not exists - exits multiplayer mode.
                         if (feedback.Contains("try another name"))
-                            {
+                        {
                             isMultiplayerGame = false;
                         }
                     }
