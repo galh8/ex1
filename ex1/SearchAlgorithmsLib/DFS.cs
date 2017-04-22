@@ -18,11 +18,10 @@ namespace SearchAlgorithmsLib
             
             Stack<State<T>> nodesStack = new Stack<State<T>>();
             HashSet<State<T>> closedNodesSet = new HashSet<State<T>>();
-            //increasing the counter
-            evaluatedNodes++;
 
             //adding the intial State to the stack and the hashset.
             nodesStack.Push(searchable.getInitialState());
+            evaluatedNodes++;
             closedNodesSet.Add(searchable.getInitialState());
 
             while (nodesStack.Count() != 0)
@@ -32,11 +31,11 @@ namespace SearchAlgorithmsLib
                 
                 for (int i = 0; i < succerssors.Count; ++i)
                 {
-                    //increasing the counter
-                    evaluatedNodes++;
                     if (!closedNodesSet.Contains(succerssors[i]))
                     {
                         nodesStack.Push(succerssors[i]);
+                        //increasing the counter
+                        evaluatedNodes++;
                         closedNodesSet.Add(succerssors[i]);
                         if (succerssors[i].Equals(searchable.getGoalState())) {
                             return backTrace(nodesStack);
@@ -47,7 +46,6 @@ namespace SearchAlgorithmsLib
                     //checking if all the succerssors already visited
                     if (i == succerssors.Count - 1)
                         nodesStack.Pop();
-           
                 }
             }
 
