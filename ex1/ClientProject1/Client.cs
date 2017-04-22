@@ -76,9 +76,19 @@ namespace Client
                         {
                             while (!close)
                             {
-                                command = Console.ReadLine();
 
-                                if (command.Contains("close")) { close = true; }
+                                //varifies the player use just multiplayer commands in multiplayer mode.
+                                command = Console.ReadLine();
+                                if (!command.Contains("close") && !command.Contains("play") && !close)
+                                {
+                                Console.WriteLine("Multiplayer game.Please enter new command");
+                                continue;
+                                }
+
+                                //if the player wants to close the session - it will be closed.
+                                if (command.Contains("close")) {
+                                    close = true;
+                                }
 
                                 writer.WriteLine(command);
                                 writer.Flush();
@@ -108,10 +118,11 @@ namespace Client
                                 reader.ReadLine();
                                 if (feedback == "close")
                                 {
-                                    Console.WriteLine("other player closed connection");
+                                    
                                     //writer.WriteLine(feedback);
                                     //writer.Flush();
                                     close = true;
+                                    Console.WriteLine("other player closed connection");
                                     getNewCommand = false;
                                 }
                             }
