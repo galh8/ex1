@@ -111,7 +111,7 @@ namespace ServerProject
         {
             Game currentGAME = gamesLobby[gameName];
 
-            /*pop out the game out of the lobby and moves it 
+            /*pop out the game out of the lobby and moves it
             to another dictonery of a being played games */
             gamesLobby.Remove(gameName);
             gamesBeingPlayed.Add(otherPlayer, currentGAME);
@@ -150,8 +150,7 @@ namespace ServerProject
             //removing both of the players from the list.
             gamesBeingPlayed.Remove(firstPlayer);
             gamesBeingPlayed.Remove(secondPlayer);
-            
-        }
+         }
 
         /// <summary>
         /// Gets the other player of the game.

@@ -68,6 +68,12 @@ namespace Client
                             break;
                         }
                         Console.WriteLine("{0}", feedback);
+                        //if the name of the game already exists, or the game we want to join
+                        //does not exists - exits multiplayer mode.
+                        if (feedback.Contains("another"))
+                        {
+                            isMultiplayerGame = false;
+                        }
                     }
                     reader.ReadLine();
                     if (isMultiplayerGame)
@@ -108,7 +114,7 @@ namespace Client
                                     if (reader.Peek() == '@')
                                     {
                                         {
-                                            if ((feedback != "close"))
+                                            if (feedback != "close")
                                             {
                                                 Console.WriteLine("{0}", feedback);
                                             }

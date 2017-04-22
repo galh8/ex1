@@ -67,7 +67,7 @@ namespace ServerProject
             //{
             //    if (!isMultiplayer)
             //    {
-            //        return "Not a multiplayer game";
+            //        return "Not a multiplayer game" + '\n';
             //    }
             //    else if (commandKey.Contains("close"))
             //    {
@@ -89,7 +89,7 @@ namespace ServerProject
         public void setView(IView v)
         {
             this.view = v;
-            
+
         }
     }
 }

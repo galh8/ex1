@@ -25,7 +25,7 @@ namespace ServerProject.commands
         /// <param name="args">The arguments.</param>
         /// <param name="client">The client.</param>
         /// <returns>string of the outcome</returns>
-        public string Execute(string[] args, TcpClient client )
+        public string Execute(string[] args, TcpClient client)
         {
             TcpClient clientToNotify = model.getOtherPlayerClient(client);
             //removing the game from the games being played
@@ -34,7 +34,7 @@ namespace ServerProject.commands
             Console.WriteLine("other player notified to close connection");
             Console.WriteLine("Closing client connection");
 
-            return "close connection"+'\n';
+            return "close connection" + '\n';
         }
     }
 }
