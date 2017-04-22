@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace ServerProject
             Model model = new Model();
             IView view = new View(controller);
             controller.buildController(model, view);
-            Server server = new Server(49251, view);
+            int port = int.Parse(ConfigurationSettings.AppSettings["port"]);
+            Server server = new Server(port, view);
             server.start();
         }
     }

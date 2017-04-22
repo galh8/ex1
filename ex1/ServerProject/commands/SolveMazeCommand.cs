@@ -31,7 +31,7 @@ namespace ServerProject.commands
             int algo = int.Parse(args[1]);
 
             //checks if maze actually exists.
-            if (!model.isNameAlreadyExists(mazeName))
+            if (!model.singleGameExists(mazeName))
             {
                 return "maze does not exists";
             }

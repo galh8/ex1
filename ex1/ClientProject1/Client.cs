@@ -23,12 +23,13 @@ namespace Client
 
         static void Main(string[] args)
         {
-
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 49251);
+            int port = int.Parse(ConfigurationSettings.AppSettings["port"]);
+            //Console.WriteLine(port + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             TcpClient client = new TcpClient();
             client.Connect(ep);
             Console.WriteLine("Client has been connected");
-
+            
             string command = null;
             bool getNewCommand = true;
             NetworkStream stream = client.GetStream();
