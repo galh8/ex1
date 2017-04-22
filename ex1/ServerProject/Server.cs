@@ -22,6 +22,10 @@ namespace ServerProject
             this.ch = ch;
             this.clientsList = new List<TcpClient>();
         }
+
+        /// <summary>
+        /// Starts this instance.
+        /// </summary>
         public void start()
         {
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
@@ -51,6 +55,10 @@ namespace ServerProject
             task.Wait();
 
         }
+
+        /// <summary>
+        /// Stops the listner.
+        /// </summary>
         public void Stop()
         {
             listener.Stop();

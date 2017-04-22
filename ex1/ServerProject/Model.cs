@@ -14,17 +14,21 @@ namespace ServerProject
 {
     public class Model : IModel
     {
+        //contains all the BFS solutions
         private Dictionary<string, string> mazeBFSSolutions;
+        //contains all the DFS solutions
         private Dictionary<string, string> mazeDFSSolutions;
+        //contains all the mazes
         private Dictionary<string, Maze> mazesDictionary;
+        //contains all the games waiting for an other player.
         private Dictionary<string, Game> gamesLobby;
+        //contains all the games that are being played.
         private Dictionary<TcpClient, Game> gamesBeingPlayed;
+        //contains all the names af all the mazes names to prevent duplication.
         private HashSet<string> mazesAndGamesNames;
         DFSMazeGenerator mazeGenerator;
         BFS<Position> bfsSolver;
         DFS<Position> dfsSolver;
-
-
 
         public Model()
         {
@@ -41,6 +45,13 @@ namespace ServerProject
         }
 
 
+        /// <summary>
+        /// Generates the maze.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
+        /// <returns>maze</returns>
         public Maze GenerateMaze(string name, int rows, int cols)
         {
             Maze maze = mazeGenerator.Generate(rows, cols);
@@ -48,9 +59,17 @@ namespace ServerProject
             mazesAndGamesNames.Add(name);
             return maze;
         }
-        
 
-        public Game startGame(string name, int rows, int cols, System.Net.Sockets.TcpClient firstPlayer)
+
+        /// <summary>
+        /// Starts the game.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="rows">The rows.</param>
+        /// <param name="cols">The cols.</param>
+        /// <param name="firstPlayer">The first player.</param>
+        /// <returns>a new game.</returns>
+        public Game startGame(string name, int rows, int cols, TcpClient firstPlayer)
         {
             Maze maze = mazeGenerator.Generate(rows, cols);
             maze.Name = name;
@@ -71,6 +90,12 @@ namespace ServerProject
             return newGame;
         }
 
+        /// <summary>
+        /// Joins a player to an active game.
+        /// </summary>
+        /// <param name="gameName">Name of the game.</param>
+        /// <param name="otherPlayer">The other player.</param>
+        /// <returns>string of the played game.</returns>
         public string join(string gameName, System.Net.Sockets.TcpClient otherPlayer)
         {
             Game currentGAME = gamesLobby[gameName];
@@ -87,23 +112,24 @@ namespace ServerProject
             return currentGAME.PlayedMaze().ToJSON();
         }
 
+        /// <summary>
+        /// Plays the specified direction.
+        /// </summary>
+        /// <param name="direction">The direction.</param>
+        /// <param name="otherPlayer">The other player.</param>
+        /// <returns>string of the direction that was played.</returns>
         public string play(string direction, TcpClient otherPlayer)
         {
             Game currentGAME = gamesBeingPlayed[otherPlayer];
             TcpClient playerToNotify = currentGAME.getOtherPlayer(otherPlayer);
-
-
-            /*pop out the game out of the lobby and moves it 
-            to another dictonery of a being played games */
-            //gamesLobby.Remove(direction);
-            // gamesBeingPlayed.Add(direction, currentGAME);
-
-            //notify that another player joined the game.
-            //currentGAME.joinAnotherPlayer(otherPlayer);
-
             return currentGAME.PlayedMaze().ToJSON();
         }
 
+        /// <summary>
+        /// Closes the game.
+        /// </summary>
+        /// <param name="firstPlayer">The first player.</param>
+        /// <param name="secondPlayer">The second player.</param>
         public void close(TcpClient firstPlayer, TcpClient secondPlayer)
         {
             Game currentGame = gamesBeingPlayed[firstPlayer];
@@ -116,6 +142,11 @@ namespace ServerProject
             
         }
 
+        /// <summary>
+        /// Gets the other player of the game.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <returns></returns>
         public TcpClient getOtherPlayerClient(TcpClient client)
         {
             Game currentGAME = gamesBeingPlayed[client];
@@ -123,6 +154,12 @@ namespace ServerProject
             return otherPlayer;
 
         }
+
+        /// <summary>
+        /// Gets the name of the player that playes that specific game.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <returns>the name of the game</returns>
         public string getClientGameName(TcpClient client)
         {
             Game currentGAME = gamesBeingPlayed[client];
@@ -130,12 +167,22 @@ namespace ServerProject
 
         }
 
+        /// <summary>
+        /// Gets the list of games.
+        /// </summary>
+        /// <returns>list of games.</returns>
         public string[] getListOfGames()
         {
             return gamesLobby.Keys.ToArray();
         }
 
 
+        /// <summary>
+        /// Solves the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="algo">The algo.</param>
+        /// <returns>the solution by the desired algo</returns>
         public string solve(string name, int algo)
         {
             if (algo == 0)
@@ -183,6 +230,13 @@ namespace ServerProject
             return solveObj.ToString();
         }
 
+        /// <summary>
+        /// Determines whether [is name already exists] [the specified name].
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>
+        ///   <c>true</c> if [is name already exists] [the specified name]; otherwise, <c>false</c>.
+        /// </returns>
         public bool isNameAlreadyExists(string name)
         {
             if (mazesAndGamesNames.Contains(name))
@@ -194,6 +248,11 @@ namespace ServerProject
         }
 
 
+        /// <summary>
+        /// Calculates the solution.
+        /// </summary>
+        /// <param name="pathToGoal">The path to goal.</param>
+        /// <returns>return the solution as we want</returns>
         private string calculateSolution(List<State<Position>> pathToGoal)
         {
             StringBuilder pathToReturn = new StringBuilder();

@@ -35,6 +35,7 @@ namespace Client
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
             {
+                //always working till the user himself exit the program via the GUI.
                 while (true)
                 {
                     bool isMultiplayerGame = false;

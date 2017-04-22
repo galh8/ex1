@@ -12,9 +12,6 @@ namespace ServerProject
 {
     public class Game
     {
-        //1. define a delegate - the signature of the method.
-        //2. define an event based on that delegate.
-        //3. raise the event.
 
         private System.Net.Sockets.TcpClient gameCreatorPlayer, secondPlayer;
         private bool canStart;
@@ -29,16 +26,28 @@ namespace ServerProject
             canStart = false;
             name = maze.Name;
         }
+
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name
         {
             get { return this.name; }
         }
 
-        //we declare a delegate to a function which looks like void gameEventHandler(object source, EventArgs e).
+        //we declare a delegate to a function which looks like void gameEventHandler
+        //(object source, EventArgs e).
         //public delegate void gameEventHandler(object source, EventArgs e);
 
         //public event gameEventHandler gameNeedsToStart;
 
+        /// <summary>
+        /// Joins another player to the game.
+        /// </summary>
+        /// <param name="OtherPlayer">The other player.</param>
         public void joinAnotherPlayer(System.Net.Sockets.TcpClient OtherPlayer)
         {
             secondPlayer = OtherPlayer;
@@ -47,6 +56,11 @@ namespace ServerProject
             //OngameNeedsToStart();
         }
 
+        /// <summary>
+        /// Gets the other player TcpClient.
+        /// </summary>
+        /// <param name="player">The player.</param>
+        /// <returns></returns>
         public TcpClient getOtherPlayer(TcpClient player)
         {
             if (player == gameCreatorPlayer)
@@ -62,16 +76,30 @@ namespace ServerProject
         //    }
         //}
 
+        /// <summary>
+        /// returns the maze.
+        /// </summary>
+        /// <returns>that game's maze.</returns>
         public Maze PlayedMaze()
         {
             return playedMaze;
         }
 
+        /// <summary>
+        /// Determines whether the game can start.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance can start; otherwise, <c>false</c>.
+        /// </returns>
         public bool CanStart()
         {
             return canStart;
         }
 
+        /// <summary>
+        /// Gets the creator player.
+        /// </summary>
+        /// <returns></returns>
         public TcpClient getCreatorPlayer()
         {
             return gameCreatorPlayer;

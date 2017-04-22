@@ -8,6 +8,11 @@ namespace SearchAlgorithmsLib
 {
     public class DFS<T> : Searcher<T>
     {
+        /// <summary>
+        /// Searches the specified searchable by the dfs algo.
+        /// </summary>
+        /// <param name="searchable">The searchable.</param>
+        /// <returns>solution of the dfs</returns>
         public override Solution<T> search(ISearchable<T> searchable)
         {
             
@@ -50,6 +55,11 @@ namespace SearchAlgorithmsLib
        }
 
 
+        /// <summary>
+        /// returns the solution as we want to see it.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>return the solution of the bfs as we want to see it</returns>
         private Solution<T> backTrace(Stack<State<T>> path)
         {
             Solution<T> solution = new Solution<T>();

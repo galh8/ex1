@@ -22,6 +22,11 @@ namespace ServerProject
             isMultiplayer = false;
         }
 
+        /// <summary>
+        /// Builds the controller. acts like a later. Constructor.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="view">The view.</param>
         public void buildController(Model model, IClientHandler view)
         {
             this.model = model;
@@ -37,6 +42,12 @@ namespace ServerProject
         }
 
 
+        /// <summary>
+        /// Executes the desired command.
+        /// </summary>
+        /// <param name="commandLine">The command line.</param>
+        /// <param name="client">The client.</param>
+        /// <returns></returns>
         public string executeCommand(string commandLine, TcpClient client)
         {
             string[] arr = commandLine.Split(' ');
@@ -74,12 +85,6 @@ namespace ServerProject
         {
             throw new NotImplementedException();
         }
-
-
-        //public void setSolution(Solution<T> s)
-        //{
-        //   throw new NotImplementedException();
-        //}
 
         public void setView(IClientHandler v)
         {

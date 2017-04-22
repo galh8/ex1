@@ -21,6 +21,10 @@ namespace ServerProject
             controller.setView(this);
         }
 
+        /// <summary>
+        /// runs that specific client thread.
+        /// </summary>
+        /// <param name="client">The client.</param>
         public void HandleClient(TcpClient client)
         {
                 Task handleClient =  new Task(() =>
@@ -49,6 +53,11 @@ namespace ServerProject
             //handleClient.Wait();
         }
 
+        /// <summary>
+        /// Notifies specific client(other client) with a message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="client">The client.</param>
         public void notifyClient (string message , TcpClient client)
         {
 
