@@ -24,11 +24,11 @@ namespace ServerProject.commands
             TcpClient clientToNotify = model.getOtherPlayerClient(client);
             //removing the game from the games being played
             model.close(client, clientToNotify);
-            clientHendler.notifyClient("close connection", clientToNotify);
+            clientHendler.notifyClient("close", clientToNotify);
             Console.WriteLine("other player notified to close connection");
             Console.WriteLine("Closing client connection");
 
-            return "close connection" ;
+            return "close connection";
         }
     }
 }

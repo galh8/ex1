@@ -28,22 +28,21 @@ namespace Client
             TcpClient client = new TcpClient();
             client.Connect(ep);
             Console.WriteLine("Client has been connected");
-            bool endOfCommunication = false;
 
             string command = null;
-            bool isExecuted = true;
+            bool getNewCommand = true;
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
             {
-                while (!endOfCommunication)
+                while (true)
                 {
-                    bool isMulti = false;
-                    if (isExecuted)
+                    bool isMultiplayerGame = false;
+                    if (getNewCommand)
                     {
                         command = Console.ReadLine();
                     }
-                    isExecuted = true;
+                    getNewCommand = true;
                     if (!client.Connected)
                     {
                         client = new TcpClient();
@@ -52,9 +51,9 @@ namespace Client
                         reader = new StreamReader(stream);
                         writer = new StreamWriter(stream);
                     }
-                    if ((command.Contains("start")) || (command.Contains("join")))
+                    if ((command.Contains("join")) || (command.Contains("start")))
                     {
-                        isMulti = true;
+                        isMultiplayerGame = true;
                     }
                     writer.WriteLine(command);
                     writer.Flush();
@@ -70,7 +69,7 @@ namespace Client
                         Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
-                    if (isMulti)
+                    if (isMultiplayerGame)
                     {
                         bool close = false;
                         Task sendTask = new Task(() =>
@@ -109,7 +108,11 @@ namespace Client
                                 reader.ReadLine();
                                 if (feedback == "close")
                                 {
+                                    Console.WriteLine("other player closed connection");
+                                    //writer.WriteLine(feedback);
+                                    //writer.Flush();
                                     close = true;
+                                    getNewCommand = false;
                                 }
                             }
                         });

@@ -130,17 +130,9 @@ namespace ServerProject
 
         }
 
-
-
-
-
         public string[] getListOfGames()
         {
-            //List<string> gamesList = new List<string>(this.gamesLobby.Keys);
             return gamesLobby.Keys.ToArray();
-
-
-            //return JsonConvert.SerializeObject(gamesList);
         }
 
 
