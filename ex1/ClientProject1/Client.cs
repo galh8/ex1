@@ -70,8 +70,8 @@ namespace Client
                         Console.WriteLine("{0}", feedback);
                         //if the name of the game already exists, or the game we want to join
                         //does not exists - exits multiplayer mode.
-                        if (feedback.Contains("another"))
-                        {
+                        if (feedback.Contains("try another name"))
+                            {
                             isMultiplayerGame = false;
                         }
                     }
