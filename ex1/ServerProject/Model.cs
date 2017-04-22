@@ -86,6 +86,7 @@ namespace ServerProject
             //foreach (string s in names)
             //    Console.WriteLine(name);
             //Console.WriteLine(mazesDictionary.Keys.ToArray().ToString());
+            
             mazesDictionary.Add(name, maze);
             
             Console.WriteLine("before add to lobby");

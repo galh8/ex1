@@ -18,7 +18,7 @@ namespace Client
     {
         public Client()
         {
-            
+
         }
 
         static void Main(string[] args)
@@ -70,7 +70,6 @@ namespace Client
                         Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
-                    reader.DiscardBufferedData();/////////////////
                     if (isMultiplayerGame)
                     {
                         bool close = false;
@@ -84,12 +83,13 @@ namespace Client
                                 if (!command.Contains("close") && !command.Contains("play") &&
                                     !close)
                                 {
-                                Console.WriteLine("Multiplayer game.Please enter new command");
-                                continue;
+                                    Console.WriteLine("Multiplayer game.Please enter new command");
+                                    continue;
                                 }
 
                                 //if the player wants to close the session - it will be closed.
-                                if (command.Contains("close")) {
+                                if (command.Contains("close"))
+                                {
                                     close = true;
                                 }
 
@@ -119,12 +119,10 @@ namespace Client
                                     Console.WriteLine("{0}", feedback);
                                 }
                                 reader.ReadLine();
-                                reader.DiscardBufferedData();/////////////////////////
                                 if (feedback == "close")
                                 {
-                                    
-                                    //writer.WriteLine(feedback);
-                                    //writer.Flush();
+                                    writer.WriteLine(feedback);
+                                    writer.Flush();
                                     close = true;
                                     Console.WriteLine("other player closed connection");
                                     getNewCommand = false;
@@ -144,7 +142,4 @@ namespace Client
             }
         }
     }
-} 
-
-
-
+}
