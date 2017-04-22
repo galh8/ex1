@@ -27,6 +27,10 @@ namespace ServerProject.commands
         /// <returns>string of the outcome</returns>
         public string Execute(string[] args, TcpClient client)
         {
+            if (!model.isNameAlreadyExists(args[0]))
+            {
+                return "name does not exist. try another name" + '\n';
+            }
 
             string joinedCompleted = model.join(args[0],client);
 
