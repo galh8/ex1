@@ -56,24 +56,24 @@ namespace ServerProject
                 return "Command not found";
 
 
-            if (commandKey.Contains("start") || commandKey.Contains("join"))
-            {
-                isMultiplayer = true;
-            }
+            //if (commandKey.Contains("start") || commandKey.Contains("join"))
+            //{
+            //    isMultiplayer = true;
+            //}
 
 
-            //checking and modifying the player play status
-            if ((commandKey.Contains("close")) || commandKey.Contains("play"))
-            {
-                if (!isMultiplayer)
-                {
-                    return "Not a multiplayer game";
-                }
-                else if (commandKey.Contains("close"))
-                {
-                    isMultiplayer = false;
-                }
-            }
+            ////checking and modifying the player play status
+            //if ((commandKey.Contains("close")) || commandKey.Contains("play"))
+            //{
+            //    if (!isMultiplayer)
+            //    {
+            //        return "Not a multiplayer game";
+            //    }
+            //    else if (commandKey.Contains("close"))
+            //    {
+            //        isMultiplayer = false;
+            //    }
+            //}
 
             string[] args = arr.Skip(1).ToArray();
             ICommand command = commands[commandKey];

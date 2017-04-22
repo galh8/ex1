@@ -70,6 +70,7 @@ namespace Client
                         Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
+                    reader.DiscardBufferedData();/////////////////
                     if (isMultiplayerGame)
                     {
                         bool close = false;
@@ -118,6 +119,7 @@ namespace Client
                                     Console.WriteLine("{0}", feedback);
                                 }
                                 reader.ReadLine();
+                                reader.DiscardBufferedData();/////////////////////////
                                 if (feedback == "close")
                                 {
                                     
