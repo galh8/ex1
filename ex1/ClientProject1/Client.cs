@@ -70,7 +70,6 @@ namespace Client
                         Console.WriteLine("{0}", feedback);
                     }
                     reader.ReadLine();
-                    reader.DiscardBufferedData();/////////////////
                     if (isMultiplayerGame)
                     {
                         bool close = false;
@@ -109,7 +108,7 @@ namespace Client
                                     if (reader.Peek() == '@')
                                     {
                                         {
-                                            if ((feedback != "close"))
+                                            if ((feedback != "close") && (feedback != "close connection"))
                                             {
                                                 Console.WriteLine("{0}", feedback);
                                             }
@@ -120,15 +119,14 @@ namespace Client
                                     Console.WriteLine("{0}", feedback);
                                 }
                                 reader.ReadLine();
-                                reader.DiscardBufferedData();/////////////////////////
                                 if (feedback == "close")
                                 {
-
-                                    //writer.WriteLine(feedback);
-                                    //writer.Flush();
+                                    writer.WriteLine(feedback);
+                                    writer.Flush();
                                     close = true;
                                     Console.WriteLine("other player closed connection");
                                     getNewCommand = false;
+                
                                 }
                             }
                         });

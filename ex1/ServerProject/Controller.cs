@@ -89,7 +89,7 @@ namespace ServerProject
         public void setView(IView v)
         {
             this.view = v;
-            
+
         }
     }
 }

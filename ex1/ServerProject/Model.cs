@@ -71,17 +71,27 @@ namespace ServerProject
         /// <returns>a new game.</returns>
         public Game startGame(string name, int rows, int cols, TcpClient firstPlayer)
         {
+            Console.WriteLine("Before generate");
             Maze maze = mazeGenerator.Generate(rows, cols);
+            Console.WriteLine("before name");
             maze.Name = name;
+            Console.WriteLine("before add to mazesAndGamesNames");
             mazesAndGamesNames.Add(name);
+            Console.WriteLine("before create game");
             var newGame = new Game(firstPlayer, maze); //publisher
-
+            Console.WriteLine("before add to mazeDictionary");
             //adding the new maze to the maze dictionary.
+            Console.WriteLine("the name is {0} ",name);
+            //string[] names = mazesDictionary.Keys.ToArray();
+            //foreach (string s in names)
+            //    Console.WriteLine(name);
+            //Console.WriteLine(mazesDictionary.Keys.ToArray().ToString());
             mazesDictionary.Add(name, maze);
-
+            
+            Console.WriteLine("before add to lobby");
             //adding the game to the lobby till someone asks to join
             gamesLobby.Add(name, newGame);
-
+            Console.WriteLine("before return");
             //subscriber
             //newGame.gameNeedsToStart += startGame.OngameNeedsToStart;
 
