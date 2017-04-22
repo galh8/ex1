@@ -34,7 +34,7 @@ namespace ServerProject.commands
             {
                 return "name already exists. try another name";
             }
-
+            
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
 
