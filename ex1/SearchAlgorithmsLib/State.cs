@@ -98,23 +98,26 @@ namespace SearchAlgorithmsLib
         }
 
         /// <summary>
-        /// State pool class.
+        /// State pool static class.
+        /// contains a dictionary of unique states.
         /// </summary>
         public static class StatePool
         {
             public static Dictionary<T, State<T>> statesDictionary = new Dictionary<T, State<T>>();
 
             /// <summary>
-            /// Gets the instance.
+            /// Gets the instance requsted from the state pool.
             /// </summary>
-            /// <param name="state">The state.</param>
+            /// <param name="state">The state to get from the pool.</param>
             /// <returns>State<T></returns>
             public static State<T> getInstance(T state)
             {
+                //if the statepool already contain the specific state , return it. 
                 if (statesDictionary.ContainsKey(state))
                 {
                     return statesDictionary[state];
                 }
+                //if the state pool dosen't contain the state, create it and add it to the state pool.
                 State<T> newStateToReturn = new State<T>(state);
                 statesDictionary.Add(state, newStateToReturn);
                 return newStateToReturn;
