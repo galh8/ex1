@@ -260,7 +260,22 @@ namespace ServerProject
 
             return false;
         }
+        /// <summary>
+        /// Determines whether [is name already exists] [the specified name].
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns>
+        ///   <c>true</c> if [is name already exists] [the specified name]; otherwise, <c>false</c>.
+        /// </returns>
+        public bool singleGameExists(string name)
+        {
+            if (singleplayerMazesAndGamesNames.Contains(name))
+            {
+                return true;
+            }
 
+            return false;
+        }
 
         /// <summary>
         /// Calculates the solution.
