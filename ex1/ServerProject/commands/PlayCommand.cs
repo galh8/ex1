@@ -43,7 +43,7 @@ namespace ServerProject.commands
             Console.WriteLine("After notify");
             //makes the move and returns the direction the other player moved.
             //string otherPlayerDirection = model.play(direction, client);
-            return "Other Player notified!" + '\n';
+            return "Other Player notified!" ;
         }
     }
 }

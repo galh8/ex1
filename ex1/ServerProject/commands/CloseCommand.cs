@@ -34,7 +34,7 @@ namespace ServerProject.commands
             Console.WriteLine("other player notified to close connection");
             Console.WriteLine("Closing client connection");
 
-            return "close connection";
+            return "close connection"+'\n';
         }
     }
 }

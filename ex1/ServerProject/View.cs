@@ -44,6 +44,7 @@ namespace ServerProject
                             result += '@';
                             writer.WriteLine(result);
                             writer.Flush();
+
                         }
                 }
                     //maybe we shouldnt close it...
