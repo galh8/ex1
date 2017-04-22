@@ -78,9 +78,10 @@ namespace Client
                             while (!close)
                             {
 
-                                //varifies the player use just multiplayer commands in multiplayer mode.
+                                //varifies the player use just multiplayer commands in multi mode.
                                 command = Console.ReadLine();
-                                if (!command.Contains("close") && !command.Contains("play") && !close)
+                                if (!command.Contains("close") && !command.Contains("play") &&
+                                    !close)
                                 {
                                 Console.WriteLine("Multiplayer game.Please enter new command");
                                 continue;
