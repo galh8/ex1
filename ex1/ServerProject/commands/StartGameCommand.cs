@@ -37,20 +37,11 @@ namespace ServerProject.commands
 
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
-            Console.WriteLine("Before Creating game {0} ", gameName);
             Game currentGame = model.startGame(gameName, rows, cols,client);
-            //Console.WriteLine("Before while block");
             //waiting for an other player to join the game.
             while (!currentGame.CanStart()) { }
-            //Console.WriteLine("After while block");
-            //Console.ReadLine();
             return currentGame.PlayedMaze().ToJSON() + '\n';
         }
-
-        //public void OngameNeedsToStart(object Sorce, EventArgs e)
-        //{
-        //    canStart = true;
-        //}
 
     }
 

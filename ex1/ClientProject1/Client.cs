@@ -24,7 +24,6 @@ namespace Client
         static void Main(string[] args)
         {
             int port = int.Parse(ConfigurationSettings.AppSettings["port"]);
-            //Console.WriteLine(port + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             TcpClient client = new TcpClient();
             client.Connect(ep);
@@ -80,7 +79,7 @@ namespace Client
                     if (isMultiplayerGame)
                     {
                         bool close = false;
-                        Task sendTask = new Task(() =>
+                        Task writerTask = new Task(() =>
                         {
                             while (!close)
                             {
@@ -104,7 +103,7 @@ namespace Client
                                 writer.Flush();
                             }
                         });
-                        Task listenTask = new Task(() =>
+                        Task readerTask = new Task(() =>
                         {
                             while (!close)
                             {
@@ -136,10 +135,10 @@ namespace Client
                                 }
                             }
                         });
-                        sendTask.Start();
-                        listenTask.Start();
-                        sendTask.Wait();
-                        listenTask.Wait();
+                        writerTask.Start();
+                        readerTask.Start();
+                        writerTask.Wait();
+                        readerTask.Wait();
                     }
                     client.Close();
                 }
