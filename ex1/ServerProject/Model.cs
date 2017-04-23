@@ -243,6 +243,7 @@ namespace ServerProject
 
             return false;
         }
+
         /// <summary>
         /// Determines whether [is name already exists] [the specified name].
         /// </summary>
