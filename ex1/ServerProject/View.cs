@@ -61,7 +61,6 @@ namespace ServerProject
         /// <param name="client">The client.</param>
         public void notifyClient (string message , TcpClient client)
         {
-
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);

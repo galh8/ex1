@@ -8,9 +8,19 @@ namespace SearchAlgorithmsLib
 {
     interface ISearcher<T>
     {
-        // the search method
+
+        /// <summary>
+        /// Searches the specified searchable.
+        /// </summary>
+        /// <param name="searchable">The searchable.</param>
+        /// <returns>Solution<T></returns>
         Solution<T> search(ISearchable<T> searchable);
-        // get how many nodes were evaluated by the algorithm
+
+
+        /// <summary>
+        /// get how many nodes were evaluated by the algorithm
+        /// </summary>
+        /// <returns>the number</returns>
         int getNumberOfNodesEvaluated();
     }
 }

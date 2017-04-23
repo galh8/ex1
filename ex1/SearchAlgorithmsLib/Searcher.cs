@@ -15,6 +15,12 @@ namespace SearchAlgorithmsLib
             evaluatedNodes = 0;
         }
 
+        /// <summary>
+        /// get how many nodes were evaluated by the algorithm
+        /// </summary>
+        /// <returns>
+        /// the number
+        /// </returns>
         public int getNumberOfNodesEvaluated()
         {
             return evaluatedNodes;
