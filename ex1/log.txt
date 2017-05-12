@@ -1,0 +1,700 @@
+commit 2c5d8fa695d9667e01fce4f3fc8aa1fe305e7515
+Merge: 28d3b40 b4959a0
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 02:27:32 2017 +0300
+
+    Merge branch 'master' of https://github.com/galh8/ex1
+
+commit b4959a0967f5964650e618906b377585292776b3
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 02:25:18 2017 +0200
+
+    more comments
+
+commit 8ed3e83c7d27dcc2b958319399f40c49045cb547
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 02:19:58 2017 +0200
+
+    more comments
+
+commit ea4f0d5de3ca07a9de45ac2f50eacfd37f28787b
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 02:15:29 2017 +0200
+
+    comments
+
+commit 7c65324e1df96fc74ba9e148cd8247c8e823af4f
+Merge: 975230d 3d3bcb3
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 02:02:17 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit 975230d8e9f3ed3c98ac09424e9e5667bee2c058
+Merge: 79cefa7 d363ce3
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 01:45:12 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit 79cefa7156136d8e23dff7408751c7eb022170db
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 01:45:04 2017 +0200
+
+    blabal fuck the git
+
+commit 28d3b408ed20a0cbbc1ed3e227ed0fa0e0da885c
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 02:26:52 2017 +0300
+
+    state comments
+
+commit c9681e20a7a016e7795fd89ae9b5dd55f256376f
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 01:10:02 2017 +0200
+
+    another version of verify
+
+commit 3d3bcb31aa898e28b653ff66b007ccd51c9ed086
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 02:00:49 2017 +0300
+
+    comments
+
+commit 7ce161c7140f05969abbb46d5b142631b9628155
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 00:56:36 2017 +0200
+
+    exists multiplayer mode.
+
+commit d363ce3eab826a4040d3d50f7ef8a2d676cd6073
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 01:44:49 2017 +0300
+
+    improve separate
+
+commit 4fb5e2d1e862a663f7ab67c1936fb03d48d399dc
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 01:36:55 2017 +0300
+
+    seperate maze of single and multiplayer
+
+commit 30fd326f4a7b3d716e39b13bb0d45db0a636ca84
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 01:18:19 2017 +0300
+
+    Port app config
+
+commit 7d84fd7abbd1ce57215239931698820c31e658d1
+Merge: 04dc0e5 c9681e2
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 01:11:02 2017 +0300
+
+    Merge branch 'master' of https://github.com/galh8/ex1
+
+commit 7afef819fe99679c423c8efe5333c5d3340fadba
+Merge: bdc487d 59a5f64
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 00:06:37 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit bdc487dc95d8532133ebf4124c0864515a21e5f5
+Merge: 66f2645 783c897
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 23 00:06:33 2017 +0200
+
+    blasflsaldasda
+
+commit 04dc0e5c89afe7eee83ece924eba6ef51d177df2
+Merge: 5bb62ff 7ce161c
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 00:59:02 2017 +0300
+
+    Merge branch 'master' of https://github.com/galh8/ex1
+
+commit 5bb62ff0eed057ff62903d82b7e9df17a0c75055
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 00:58:57 2017 +0300
+
+    dummy push
+
+commit 59a5f64bf8ac1360b234e350aaf1e62cdec5e4c5
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 23 00:05:44 2017 +0300
+
+    HALAS IM HA TARGIL HAZE!!!!!!!
+
+commit 66f2645675019ad5ddcac960d7d546d90e797481
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 22:14:14 2017 +0200
+
+    blablal
+
+commit 783c89702a1f37fee45207742804bca6039a2bdf
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sat Apr 22 22:13:56 2017 +0300
+
+    INAAL HAOLAM
+
+commit c5a3f3fdf4fba992f41a293325ddeeccf7b3de36
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 19:07:22 2017 +0200
+
+    playing with the dfs counter... Amir needs to check it out too.
+
+commit a7da67690e79167bba37822e3313262149c913f9
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 12:09:06 2017 +0200
+
+    changing methods by convention
+
+commit c3b52205e9cc2282c53f5e6d0d3789579b221362
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 12:01:23 2017 +0200
+
+    more comments
+
+commit 990c9ce7b6bfae689548b3f261077d2068306da6
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 11:54:32 2017 +0200
+
+    line editing
+
+commit 2b9c22b534abaca656f25824164ee70c6ae80624
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 11:51:47 2017 +0200
+
+    with more comments and line editing
+
+commit 17d14342fb8673d76a033b9b7f7654aab0cf2305
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 10:52:13 2017 +0200
+
+    after varifing the player use just multiplayer commands in multiplayer mode.
+
+commit 6c37011b2fade88183e8dada9e0b6e586dbbbc6d
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 22 10:26:27 2017 +0200
+
+    new version of connection
+
+commit 4e4d789555828226269033367af5c825d98b1685
+Author: galh8 <galhuta@gmail.com>
+Date:   Fri Apr 21 23:44:34 2017 +0200
+
+    everything is working... need to add more comments and mybe to check the readline and stuff
+
+commit 8fdc3e7dab22272498ad98b8dca8ad0b0fbb7681
+Author: Amir <halfonamir1@gmail.com>
+Date:   Fri Apr 21 18:12:23 2017 +0300
+
+    SHABAT
+
+commit ee3be36babb0437a9b13caf349674d441e0d12df
+Author: Amir <halfonamir1@gmail.com>
+Date:   Fri Apr 21 18:07:38 2017 +0300
+
+    Push shabat
+
+commit f5336c7d8dafe8c2e23085dc9cfe357863d19265
+Author: Amir <halfonamir1@gmail.com>
+Date:   Thu Apr 20 17:38:27 2017 +0300
+
+    Still on close
+
+commit ce7743d656d27a5c70371cbc918b14bbb7a4314c
+Author: Amir <halfonamir1@gmail.com>
+Date:   Thu Apr 20 13:23:31 2017 +0300
+
+    Another try on close.. still have problems. check singleplayer commands...
+
+commit 277985a4aacf1951204fc503081d573bb1e6b2d4
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 19 20:41:21 2017 +0300
+
+    Till on close
+
+commit 27bcd0acb3406ccc8a1d74473e990f8d74feb471
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 19 15:25:53 2017 +0300
+
+    Trying close
+
+commit ec7cbaccb54b5303e206beb6b379f16937b96ed9
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 19 14:48:10 2017 +0300
+
+    List working
+
+commit 5f3f35e0dd332fab13ad418e7dddb265a70e95a4
+Author: Amir <halfonamir1@gmail.com>
+Date:   Tue Apr 18 20:44:53 2017 +0300
+
+    separate DFS and BFS solutions
+
+commit 82879082e40fad044105ec0f10c9e16b30d74662
+Merge: 15abbdc f94db97
+Author: Amir <halfonamir1@gmail.com>
+Date:   Tue Apr 18 20:34:25 2017 +0300
+
+    State pool
+
+commit f94db97df013f541e80ac7d52a270c0470c730fa
+Author: galh8 <galhuta@gmail.com>
+Date:   Tue Apr 18 19:05:16 2017 +0200
+
+    pushhhhhhh
+
+commit 15abbdc5a55d0860bf610eed21bc87a05e6dc119
+Author: Amir <halfonamir1@gmail.com>
+Date:   Tue Apr 18 19:05:50 2017 +0300
+
+    BLABLA
+
+commit 860b1d42e9ab68562e735d692f534d80b218323c
+Author: galh8 <galhuta@gmail.com>
+Date:   Tue Apr 18 17:11:29 2017 +0200
+
+    play version 2.1.1.0
+
+commit a3ac79459bcd70e2afa119db90fed802d5982f67
+Merge: e7243d5 dd56425
+Author: galh8 <galhuta@gmail.com>
+Date:   Tue Apr 18 16:23:34 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit e7243d530fb020ab54fba3172954b7073ce01fca
+Author: galh8 <galhuta@gmail.com>
+Date:   Tue Apr 18 16:23:30 2017 +0200
+
+    BALBLA
+
+commit dd564253f74ff4b7d17e814d070f42a1aa7dfa1a
+Author: Amir <halfonamir1@gmail.com>
+Date:   Tue Apr 18 16:22:07 2017 +0300
+
+    push
+
+commit c0f019129204b93268277822c562459f06055067
+Author: Amir <halfonamir1@gmail.com>
+Date:   Tue Apr 18 10:04:29 2017 +0300
+
+    Trying to solve play problem
+
+commit efb2d02e80530df4cb5abe433f28d2fc2e8bd73f
+Author: Amir <halfonamir1@gmail.com>
+Date:   Tue Apr 18 00:22:01 2017 +0300
+
+    Play command
+
+commit 5d276d18c0de5c6628805a505fbdc52c95092440
+Merge: e4150f6 50aac20
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 23:47:56 2017 +0200
+
+    start and join works
+
+commit e4150f6d56f65c2c2d5965e4d9c88fe089231e8a
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 23:01:55 2017 +0200
+
+    dsadasdasd
+
+commit c321a0074e0b9afb158a37fe945fe74300fda8d0
+Merge: 2534925 a75ccd0
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 22:44:29 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit 25349251b8eb8929fe6f80ac73a92c1cf5ef535b
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 22:42:59 2017 +0200
+
+    blabla
+
+commit 50aac20cc590acfa48738ee15d87e4ae7a2bdfb9
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 23:33:09 2017 +0300
+
+    Server problem solved
+
+commit 06faef20c48604828b7cc19caae9fffe14e60048
+Merge: 203ec9d c321a00
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 22:51:19 2017 +0300
+
+    Merge branch 'master' of https://github.com/galh8/ex1
+
+commit 203ec9dcb2ebe65e001a80800bb6dfd764bdd45e
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 22:49:38 2017 +0300
+
+    PUSH DUMMYYYYYYY
+
+commit a75ccd0ba8cdc248fbe689441a0ecaad0d54d4e6
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 22:39:40 2017 +0300
+
+    DUMMYYYYYYYYYYYYYYY
+
+commit 564d5e30c01f5c16ded399b8322afadffc837510
+Merge: 7cd55fc 99f64d2
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 22:37:16 2017 +0300
+
+    dummy project
+
+commit 99f64d2dc08a2fa970e1ca941bcdbfa143f057f0
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 22:22:44 2017 +0200
+
+    solve dfs v.2.1.2
+
+commit 8dddb98bef9cb273aeb79dc8e537ece19cda221f
+Merge: b2bb0c2 61bc328
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 22:03:57 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit b2bb0c27bd44a5d77fd36cf7d10292d5f2e4b5f5
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 22:02:52 2017 +0200
+
+    dfs came from
+
+commit 251de37353c6049e5df60adab8e70c0c4eb231b5
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 21:45:55 2017 +0200
+
+    solve
+
+commit d45e6cdb83dc34048339646cc827441b65ee6614
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 21:33:43 2017 +0200
+
+    solve
+
+commit 7cd55fce4279a1c6e68f603f6845261d7cf48bab
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 22:23:18 2017 +0300
+
+    BLA
+
+commit a180664ef1186b5560e011bdb69f8d9488efb377
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 21:19:27 2017 +0200
+
+    solve
+
+commit 61bc32801e40cda59a951ef3d15939832add2a48
+Merge: b244ee5 251de37
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 21:48:23 2017 +0300
+
+    Fake
+    push
+
+commit 2c9fae6ceca92f852eafe4b61090fcdefb38f4e9
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 17 20:09:17 2017 +0200
+
+    work at the holiday... needs alot of debug
+
+commit b244ee5a307c4ee06282dc84668de764eb6339c7
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 17 20:45:02 2017 +0300
+
+    dummy commit
+
+commit 3e51e11e7292fb4aa7e34791bf817e6ebd5186b5
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 16 14:59:26 2017 +0200
+
+    solve v2.0
+
+commit bc758114864c85e51af63d791793b167dc918a70
+Merge: 9c09a31 c09678b
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 16 14:20:38 2017 +0200
+
+    SOLVE
+
+commit 9c09a31606e9707674fb2508cd11198b2c12e2e1
+Author: galh8 <galhuta@gmail.com>
+Date:   Sat Apr 15 11:10:34 2017 +0200
+
+    blabla
+
+commit c09678b82a76d1775727d6c8373f3f1a622e85ec
+Author: Amir <halfonamir1@gmail.com>
+Date:   Fri Apr 14 14:48:13 2017 +0300
+
+    Ports updated.
+
+commit d45d0401deef72613f6ea2c8d15db9c40c56856f
+Merge: 988047d 14afeef
+Author: Amir <halfonamir1@gmail.com>
+Date:   Fri Apr 14 12:59:33 2017 +0300
+
+    After Connection problem solved
+
+commit 988047d93936f6a204af57a089d3b9c168c859b6
+Author: Amir <halfonamir1@gmail.com>
+Date:   Fri Apr 14 12:54:57 2017 +0300
+
+    Connection problem solved
+
+commit 14afeef7c7ff0f46a600d110e32d218170d9e4f1
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 20:23:40 2017 +0200
+
+    nnkjnjknj
+
+commit 33266b1bc3264ce4b3b0c60256524574b6619961
+Merge: 1470841 4fc104d
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 14:51:59 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit 14708419965f25a0bede00bd3c4515f62e7459d5
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 14:51:24 2017 +0200
+
+    blalbalad
+
+commit dc161646efa6dedfe31bab38a23d460afd4e470f
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 14:19:20 2017 +0200
+
+    string
+
+commit ea657167efca3c23ef06f5199d47a11445e3d823
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 14:09:40 2017 +0200
+
+    trying to serliazie
+
+commit 8350b90da3ffe7e2841c4b4ae77f6f7b4c72fc86
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 13:29:22 2017 +0200
+
+    restoring...
+
+commit 4fc104db116eb2b356a0e0f281c47769cab93ee8
+Merge: 8a37be1 dc16164
+Author: Amir <halfonamir1@gmail.com>
+Date:   Thu Apr 13 14:20:53 2017 +0300
+
+    MERGE
+
+commit 75c93bcca0e2cc223d05fee59ce84d3eee53634c
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 12:42:01 2017 +0200
+
+    trying to run TASK
+
+commit 379cbae80df9c9e0578e4273b0e7002e7dbcac5b
+Merge: 7681e96 3755228
+Author: galh8 <galhuta@gmail.com>
+Date:   Thu Apr 13 12:33:58 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit 8a37be1f4c0084165bd7e0ec79868b41cc86db24
+Author: Amir <halfonamir1@gmail.com>
+Date:   Thu Apr 13 13:22:59 2017 +0300
+
+    Json
+
+commit a7974b80b74570730bcda0fe9578eb8b90f6c5f2
+Author: Amir <halfonamir1@gmail.com>
+Date:   Thu Apr 13 12:42:42 2017 +0300
+
+    BLA
+
+commit 37552285eb34ceff82c78562f3c2f03b4b3fb397
+Author: Amir <halfonamir1@gmail.com>
+Date:   Thu Apr 13 12:33:42 2017 +0300
+
+    BLA
+
+commit 7681e964e151de13acc44cc525727c59a7d4f13e
+Merge: 824e7ea 0c559a1
+Author: galh8 <galhuta@gmail.com>
+Date:   Wed Apr 12 19:11:07 2017 +0200
+
+    Merge branch 'master' of https://github.com/galh8/ex1.git
+
+commit 824e7ea00daaa3c586a85b06781303c20d8f9be4
+Author: galh8 <galhuta@gmail.com>
+Date:   Wed Apr 12 19:11:03 2017 +0200
+
+    fuck that git
+
+commit 0c559a1daa3263bab19245387054c0c4944db392
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 19:03:21 2017 +0300
+
+    Partition to client server
+
+commit 3a9a0b99b7506561edb90c9cfde1e7c46d2de3f6
+Merge: 247c13f 106235f
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 17:21:44 2017 +0300
+
+    Merge branch 'master' of https://github.com/galh8/ex1
+
+commit 106235f8aaa1cbd5eed25c48e5578cd9c15a1cb3
+Author: galh8 <galhuta@gmail.com>
+Date:   Wed Apr 12 17:20:12 2017 +0200
+
+    model
+
+commit 247c13f19b52d05dcf16b96b9c4d14b5687466eb
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 17:21:15 2017 +0300
+
+    Created a Server
+
+commit a2fba0130e08ac8b7f384411e8cbd29add1497ce
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 17:00:30 2017 +0300
+
+    Continue with MVC
+
+commit 32692c6a746f07e4becbec3b2af4440be199c715
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 16:34:46 2017 +0300
+
+    MVC
+
+commit 2c47fe0a0acdcf9cc7ed9e778adee02a124e2ca1
+Author: galh8 <galhuta@gmail.com>
+Date:   Wed Apr 12 13:37:42 2017 +0200
+
+    mission 1 done
+
+commit 3f0e86380785d2ea47f6916c7b6b352ba2d174fc
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 12:11:25 2017 +0300
+
+    Adding one more abstract class -> Searcher
+
+commit 8e9dd9ca0410488385a1710dc3b4188b44aa9f7b
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 11:59:41 2017 +0300
+
+    Starting work on DFS
+
+commit 2762c51e517d6fcf79c7d967d57802129f9a2c17
+Author: Amir <halfonamir1@gmail.com>
+Date:   Wed Apr 12 03:45:28 2017 +0300
+
+    Making the BFS working. adding a main for tests.
+
+commit eb3c7dbd649fd704cb8bee35b85db5a94b9e03fb
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 10 15:54:28 2017 +0300
+
+    Before Passover
+
+commit 6c40b88a8e0da2d690c20d9a1728a71bea3046c5
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 10 15:04:11 2017 +0200
+
+    state
+
+commit 8051e5e2e47b0db0766f4d8fd8ac4aa1fb1aa5ff
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 10 15:00:25 2017 +0200
+
+    updating solution
+
+commit 2da217aa1114b446829a71f44b85eda92bc29296
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 10 14:17:53 2017 +0300
+
+    Solution!
+
+commit 0859f8a894ec7dfa7ec05f624a9cde4a404ebfba
+Author: Amir <halfonamir1@gmail.com>
+Date:   Mon Apr 10 14:02:34 2017 +0300
+
+    solution
+
+commit a123236943919e983be9617451c2893ffd1a5291
+Author: galh8 <galhuta@gmail.com>
+Date:   Mon Apr 10 13:48:26 2017 +0200
+
+    Generic state
+
+commit 90cd180941d4b7ac252d07e255f88c22cf70c4c6
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 17:40:58 2017 +0200
+
+    bla bla
+
+commit 51637a887222b16810199ed259e847085c931eac
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 17:27:37 2017 +0200
+
+    queue
+
+commit 5921820ad180a8e4d3657030d306e5c3ea1d948b
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 17:11:42 2017 +0200
+
+    state
+
+commit 5ba4b9102b96cd5fe3fb55d6b3ae33982c264230
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 9 17:09:30 2017 +0300
+
+    Searcher
+
+commit 2c0d24b7adb872beaaf2a3b17348fca2386ea15a
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 17:02:15 2017 +0200
+
+    state T
+
+commit e6dde51d0ad9ec43ea4f22984aed6b46bfd297c2
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 16:59:47 2017 +0200
+
+    state and bfs
+
+commit 2eb37e7a6a0344f4848d204bb602f004caca005c
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 9 16:41:04 2017 +0300
+
+    Interfaces...
+
+commit 702562f78bb53d8858bef6b944800c6e0a554e97
+Author: Amir <halfonamir1@gmail.com>
+Date:   Sun Apr 9 16:37:52 2017 +0300
+
+    BDIKA
+
+commit 4a540067ce5d38d32fa203f24c2fe8e77d1a66d7
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 16:32:07 2017 +0200
+
+    dll
+
+commit c3fee5255c8255c50e4ba5c87714c0faebfd87bf
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 16:27:47 2017 +0200
+
+    beep
+
+commit 39ee55450ed81f806790a6ed82ca804b7503000f
+Author: galh8 <galhuta@gmail.com>
+Date:   Sun Apr 9 16:26:03 2017 +0200
+
+    neww
