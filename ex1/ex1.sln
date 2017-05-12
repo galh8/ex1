@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerProject", "ServerProj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dummy", "dummy\dummy.csproj", "{953E11EE-A905-409B-9A23-C459DF38037B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "learnWPF", "..\..\..\..\Documents\Visual Studio 2017\Projects\learnWPF\learnWPF\learnWPF.csproj", "{53979F8C-1EA6-478A-BE47-F18A913B1179}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{953E11EE-A905-409B-9A23-C459DF38037B}.Debug|Any CPU.Deploy.0 = Release|Any CPU
 		{953E11EE-A905-409B-9A23-C459DF38037B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{953E11EE-A905-409B-9A23-C459DF38037B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53979F8C-1EA6-478A-BE47-F18A913B1179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53979F8C-1EA6-478A-BE47-F18A913B1179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53979F8C-1EA6-478A-BE47-F18A913B1179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53979F8C-1EA6-478A-BE47-F18A913B1179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
