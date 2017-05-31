@@ -61,7 +61,11 @@ namespace SearchAlgorithmsLib
         private Solution<T> backTrace(Stack<State<T>> path)
         {
             Solution<T> solution = new Solution<T>();
-            State<T> currentState = path.Pop();
+            State<T> currentState = null;
+            if (path.Count > 0)
+            {
+                currentState = path.Pop();
+            }
 
             while (path.Count != 0)
             {
